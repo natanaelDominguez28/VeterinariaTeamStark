@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition>
+            <div id="tooplate_header">
+                <div id="titulo">
+                    <center><h1>CLINICA VETERINARIA ONLINE</h1></center>
+                </div>
+            </div>
+            
+            <div id="tooplate_middle">
+                <h:form rendered="">
+                    <p:menubar>
+                        <p:submenu label="Historias Clínicas">
+                            
+                        </p:submenu>
+                        <p:submenu label="Tablas">
+                            <p:menuitem value="Propietarios" outcome="/propietarios/propietarios"/>
+                        </p:submenu>
+                        <p:menuitem value="Datos Personales" outcome="/usuarios/usuarios"/>
+                        <p:menuitem value="Volver" outcome="/menu"/>
+
+                        <f:facet name="options">
+                            <p:outputLabel value="Bienvenido" />
+                            <p:commandButton 
+                                             />
+                        </f:facet>
+                    </p:menubar>
+                </h:form>
+                <p:panel >
+                    <h:form>
+                        <p:outputLabel />
+                        <p:commandButton />
+                    </h:form>
+                </p:panel>
+            </div>
+        </ui:composition>
+
+    </body>
+</html>

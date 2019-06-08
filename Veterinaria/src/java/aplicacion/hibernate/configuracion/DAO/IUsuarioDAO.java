@@ -5,10 +5,15 @@
  */
 package aplicacion.hibernate.configuracion.DAO;
 
+import aplicacion.dominio.Usuario;
+
+
+
 /**
  *
- * @author Jorge_Openix
+ * @author mabel
  */
-public interface IUserDAO {
+public interface IUsuarioDAO {
     
+    public Usuario validarUsuario(String nombreUsuario, String password);
 }

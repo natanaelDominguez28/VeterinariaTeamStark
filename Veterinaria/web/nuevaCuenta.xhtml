@@ -1,14 +1,91 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
         <ui:composition template="./templates/template.xhtml">
 
-            <ui:define name="content">
-                content
+          
+               <ui:define name="content">
+                <div class="contenedorUsuario">
+                    <h:form id="frmNuevoUsuario" rendered="#{loginFormBean.verificarSesion() }">
+                        <p:growl id="mensajeGeneral" showDetail="false" sticky="false"/>
+                        <p:panel header="Actualización de Datos de Usuario" footer="APU 2008 - Programación Visual 2019">
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <p:outputLabel for="txtNombre" value="Nombre de Usuario: "/>
+                                <p:inputText id="txtNombre" readonly="true" 
+                                             value="#{u}"/>
+
+                                <p:outputLabel for="txtPassword" value="Password: "/>
+                                <p:inputText id="txtPassword" required="true" maxlength="40" size="40" 
+                                             value="#{k}">
+
+                                </p:inputText>
+
+                                <p:outputLabel for="txtApellido" value="Apellido: "/>
+                                <p:inputText id="txtApellido" maxlength="20" size="20" required="true"
+                                             value="#{u}"/>
+
+                                <p:outputLabel for="txtNombres" value="Nombres: "/>
+                                <p:inputText id="txtNombres" maxlength="20" size="20" required="true"
+                                             value="#{u}"/>
+
+                                <p:outputLabel for="txtDni" value="Dni: "/>
+                                <p:inputText id="txtDni" maxlength="8" size="20" required="true"
+                                             value="#{u}"/>
+
+
+
+                                <p:outputLabel for="txtFechaNacimiento" value="Fecha de Nacimiento: "/>
+                                <p:calendar id="txtFechaNacimiento" pattern="dd/MM/yyyy" mask="true"
+                                            maxlength="10" size="10" required="true" locale="es" 
+                                            value="#{usuarioFormBean.usuarioBean.usuario.persona.fechaNacimiento}"/>
+
+                                <p:outputLabel for="txtEmail" value="Email: "/>
+                                <p:inputText id="txtEmail" maxlength="20" size="20" required="true"
+                                             value="#{u}">
+                                    <f:validator validatorId="emailValidator"/>
+                                </p:inputText>
+
+
+                                <p:outputLabel for="txtCelular" value="Celular: "/>
+                                <p:inputText id="txtCelular" value="#{a}" 
+                                             maxlength="15" required="true">
+                                    <p:keyFilter regEx="/[0-9]/i" />
+                                </p:inputText>
+
+                                <h:panelGroup/>
+                                <p:commandButton id="btnRegistrar" value="crear" update="frmUsuario" icon="ui-icon-disk" 
+
+                                                 actionListener="#{registaraAlumno}" update="frmNuevoUsuario"/>
+
+                                <p:button value="cancelar " outcome="index" icon="ui-icon-close"/>
+                            </h:panelGrid>
+                        </p:panel>
+                    </h:form>
+
+
+                    <h:form rendered="#{verificarseccion }">
+                        <p:panel>
+                            <p:outputLabel value="No puede crear una nueva cuenta porque actualmente estás logueado como 
+                                           #{nombreUsuarioValidado}"/>
+                            <br/><br/>
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <p:commandButton value="salir" action="#{cerrarSesion}" icon="ui-icon-extlink"/>
+                                <p:button value="cancelar" outcome="menu" icon="ui-icon-close"/>
+                            </h:panelGrid>
+                        </p:panel>
+
+
+                    </h:form>
+
+               
+                </div>
             </ui:define>
 
         </ui:composition>

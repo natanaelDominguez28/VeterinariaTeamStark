@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package aplicacion.hibernate.configuracion.DaoImp;
+package aplicacion.hibernate.configuracion.DAO.imp;
 
-import aplicacion.dominio.Usuario;
+import aplicacion.modelo.dominio.Usuario;
 import aplicacion.hibernate.configuracion.DAO.IUsuarioDAO;
 import java.io.Serializable;
 

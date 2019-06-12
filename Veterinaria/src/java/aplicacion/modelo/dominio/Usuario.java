@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aplicacion.dominio;
+package aplicacion.modelo.dominio;
 
 import java.io.Serializable;
 

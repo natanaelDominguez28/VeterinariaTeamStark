@@ -5,7 +5,7 @@
  */
 package aplicacion.hibernate.configuracion.DAO;
 
-import aplicacion.dominio.Usuario;
+import aplicacion.modelo.dominio.Usuario;
 
 
 

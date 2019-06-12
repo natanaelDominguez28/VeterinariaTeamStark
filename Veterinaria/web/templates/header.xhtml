@@ -9,38 +9,33 @@
     <body>
 
         <ui:composition>
-            <div id="tooplate_header">
-                <div id="titulo">
-                    <center><h1>CLINICA VETERINARIA ONLINE</h1></center>
+                <div id="tooplate_header"> 
+                    <div id="titulo">
+                        <center><h1>UNIVERSIDAD NACIONAL DE JUJUY</h1></center>
+                    </div>
                 </div>
-            </div>
-            
-            <div id="tooplate_middle">
-                <h:form rendered="">
-                    <p:menubar>
-                        <p:submenu label="Historias Clínicas">
-                            
-                        </p:submenu>
-                        <p:submenu label="Tablas">
-                            <p:menuitem value="Propietarios" outcome="/propietarios/propietarios"/>
-                        </p:submenu>
-                        <p:menuitem value="Datos Personales" outcome="/usuarios/usuarios"/>
-                        <p:menuitem value="Volver" outcome="/menu"/>
 
-                        <f:facet name="options">
-                            <p:outputLabel value="Bienvenido" />
-                            <p:commandButton 
-                                             />
-                        </f:facet>
-                    </p:menubar>
-                </h:form>
-                <p:panel >
+                <div id="tooplate_middle">
                     <h:form>
-                        <p:outputLabel />
-                        <p:commandButton />
+                        <p:menubar>
+                            <p:menuitem value="productos" outcome="/consumidor/producto"/>
+                            <p:menuitem value="volver" outcome="/menu"/>
+                            <f:facet name="options">
+                                <p:outputLabel value="Bienvenido.."/>
+                                <p:commandButton value="Cerrar Seccion" action="#{cerrarSeccion}"
+                                                 />
+                            </f:facet>
+                        </p:menubar>
                     </h:form>
-                </p:panel>
-            </div>
+                    
+                    <p:panel id="panelIniciarSeccion" rendered="{verificarSesion}">
+                        <h:form>
+                            <p:outputLabel value="Seccion no iniciada"/>
+                            <p:commandButton value="Iniciar Seccion" action="/index?faces-redirect=true"/>
+                        </h:form>
+                    </p:panel>
+                </div>
+            
         </ui:composition>
 
     </body>

@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aplicacion.hibernate.configuracion.DAO;
+package aplicacion.configuracion.DAO;
 
 /**
  *
  * @author nata
  */
-public interface IDetalleDAO {
+public interface IProductoDAO {
     void crear();
     void borrar();
     void modificar();
     void obtenerTodos();
+    
 }

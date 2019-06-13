@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aplicacion.hibernate.configuracion.DAO.imp;
+package aplicacion.configuracion.DAO.imp;
 
-import aplicacion.hibernate.configuracion.DAO.IProductoDAO;
+import aplicacion.configuracion.DAO.IDetalleDAO;
 import java.io.Serializable;
 
 /**
  *
  * @author nata
  */
-public class ProductoDAOImp implements IProductoDAO, Serializable{
+public class DetalleDAOImp implements IDetalleDAO, Serializable{
 
     @Override
     public void crear() {

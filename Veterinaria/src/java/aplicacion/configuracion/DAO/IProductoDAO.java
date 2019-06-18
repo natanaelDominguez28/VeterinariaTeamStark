@@ -5,14 +5,17 @@
  */
 package aplicacion.configuracion.DAO;
 
+import aplicacion.modelo.dominio.Producto;
+import java.util.List;
+
 /**
  *
  * @author nata
  */
 public interface IProductoDAO {
-    void crear();
-    void borrar();
-    void modificar();
-    void obtenerTodos();
+    public void crear(Producto producto);
+    public void borrar(Producto producto);
+    public void modificar(Producto producto);
+    public List<Producto> obtenerTodos();
     
 }

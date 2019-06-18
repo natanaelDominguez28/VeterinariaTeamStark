@@ -6,7 +6,10 @@
 package aplicacion.configuracion.DAO.imp;
 
 import aplicacion.configuracion.DAO.IProductoDAO;
+import aplicacion.modelo.dominio.Producto;
 import java.io.Serializable;
+import java.util.List;
+import org.apache.catalina.Session;
 
 /**
  *
@@ -15,23 +18,37 @@ import java.io.Serializable;
 public class ProductoDAOImp implements IProductoDAO, Serializable{
 
     @Override
-    public void crear() {
+    public void crear(Producto producto) {
+        Session session = HibernateUtil.getSessionFactory().getSession();
+        session.beginTransaction();
+        session.save(producto);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    @Override
+    public void borrar(Producto producto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void borrar() {
+    public void modificar(Producto producto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void modificar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Producto> obtenerTodos() {
+        ArrayList<Producto> productos = new ArrayList();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(Producto.class);
+        criteria.add(Restrictions.like("estado", true));
+        if (!(criteria.list().isEmpty())){
+             productos = (ArrayList<Producto>)criteria.list();
+        session.close();
+        }
+        return productos;
     }
 
-    @Override
-    public void obtenerTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
     
 }

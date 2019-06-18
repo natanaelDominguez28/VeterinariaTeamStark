@@ -6,7 +6,11 @@
 package aplicacion.configuracion.DAO.imp;
 
 import aplicacion.configuracion.DAO.IDetalleDAO;
+import aplicacion.modelo.dominio.Detalle;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.catalina.Session;
 
 /**
  *
@@ -15,23 +19,35 @@ import java.io.Serializable;
 public class DetalleDAOImp implements IDetalleDAO, Serializable{
 
     @Override
-    public void crear() {
+    public void crear(Detalle detalle) {
+        Session session = HibernateUtil.getSessionFactory().getSession();
+        session.beginTransaction();
+        session.save(detalle);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    @Override
+    public void borrar(Detalle detalle) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void borrar() {
+    public void modificar(Detalle detalle) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void modificar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void obtenerTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Detalle> obtenerTodos() {
+        ArrayList<Detalle> detalles = new ArrayList();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(Detalle.class);
+        criteria.add(Restrictions.like("estado", true));
+        if (!(criteria.list().isEmpty())){
+             detalles = (ArrayList<Detalle>)criteria.list();
+        session.close();
+        }
+        return detalles;
     }
     
 }

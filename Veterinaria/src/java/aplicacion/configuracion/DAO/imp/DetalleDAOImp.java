@@ -6,11 +6,14 @@
 package aplicacion.configuracion.DAO.imp;
 
 import aplicacion.configuracion.DAO.IDetalleDAO;
+import aplicacion.hibernate.util.HibernateUtil;
 import aplicacion.modelo.dominio.Detalle;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.catalina.Session;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -20,7 +23,7 @@ public class DetalleDAOImp implements IDetalleDAO, Serializable{
 
     @Override
     public void crear(Detalle detalle) {
-        Session session = HibernateUtil.getSessionFactory().getSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(detalle);
         session.getTransaction().commit();

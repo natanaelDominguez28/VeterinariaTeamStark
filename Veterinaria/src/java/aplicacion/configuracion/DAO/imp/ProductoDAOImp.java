@@ -6,10 +6,14 @@
 package aplicacion.configuracion.DAO.imp;
 
 import aplicacion.configuracion.DAO.IProductoDAO;
+import aplicacion.hibernate.util.HibernateUtil;
 import aplicacion.modelo.dominio.Producto;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
-import org.apache.catalina.Session;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -19,7 +23,7 @@ public class ProductoDAOImp implements IProductoDAO, Serializable{
 
     @Override
     public void crear(Producto producto) {
-        Session session = HibernateUtil.getSessionFactory().getSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(producto);
         session.getTransaction().commit();

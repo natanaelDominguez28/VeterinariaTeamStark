@@ -73,7 +73,8 @@ private String nombreUsuario;
      */
     public String getNombreUsuarioValidado() {
         Usuario usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioValidado");
-        return usuario.getNombreUsuario();
+        //return usuario.getNombreUsuario();
+        return usuario.getNombre();
     }
     
     /**

@@ -37,7 +37,11 @@ public class DetalleDAOImp implements IDetalleDAO, Serializable{
 
     @Override
     public void modificar(Detalle detalle) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.update(detalle);
+        session.getTransaction().commit();
+        session.close();
     }
 
     @Override

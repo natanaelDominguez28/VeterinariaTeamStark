@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/06/2019 21:43:23 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aplicacion.hibernate.mapeos.Factura" table="factura" schema="public" optimistic-lock="version">
+        <id name="codigo" type="long">
+            <column name="codigo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuario" class="aplicacion.hibernate.mapeos.Usuario" fetch="select">
+            <column name="cliente" />
+        </many-to-one>
+        <property name="fecha" type="date">
+            <column name="fecha" length="13" />
+        </property>
+        <property name="estado" type="java.lang.Boolean">
+            <column name="estado" />
+        </property>
+        <one-to-one name="detalle" class="aplicacion.hibernate.mapeos.Detalle"></one-to-one>
+    </class>
+</hibernate-mapping>

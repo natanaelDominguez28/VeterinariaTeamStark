@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/06/2019 21:43:23 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aplicacion.hibernate.mapeos.Usuario" table="usuario" schema="public" optimistic-lock="version">
+        <id name="codigo" type="long">
+            <column name="codigo" />
+            <generator class="assigned" />
+        </id>
+        <property name="correo" type="string">
+            <column name="correo" length="40" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="10" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="40" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" length="20" />
+        </property>
+        <property name="estado" type="java.lang.Boolean">
+            <column name="estado" />
+        </property>
+        <property name="fechaNac" type="date">
+            <column name="fechaNac" length="13" />
+        </property>
+        <property name="dni" type="java.lang.Integer">
+            <column name="dni" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" />
+        </property>
+        <property name="barrio" type="string">
+            <column name="barrio" length="40" />
+        </property>
+        <property name="localidad" type="string">
+            <column name="localidad" length="40" />
+        </property>
+        <property name="telefono" type="java.lang.Integer">
+            <column name="telefono" />
+        </property>
+        <property name="tipoUsuario" type="string">
+            <column name="tipo_usuario" length="20" />
+        </property>
+        <set name="facturas" table="factura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cliente" />
+            </key>
+            <one-to-many class="aplicacion.hibernate.mapeos.Factura" />
+        </set>
+    </class>
+</hibernate-mapping>

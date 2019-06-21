@@ -40,9 +40,9 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-reverse-engineering>
-  <schema-selection match-catalog="Veterinaria" match-schema="public"/>
+  <schema-selection match-catalog="Veterinaria"/>
+  <table-filter match-name="factura"/>
   <table-filter match-name="usuario"/>
   <table-filter match-name="detalle"/>
-  <table-filter match-name="factura"/>
   <table-filter match-name="producto"/>
 </hibernate-reverse-engineering>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/06/2019 21:43:23 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aplicacion.hibernate.mapeos.Detalle" table="detalle" schema="public" optimistic-lock="version">
+        <id name="codigo" type="long">
+            <column name="codigo" />
+            <generator class="foreign">
+                <param name="property">factura</param>
+            </generator>
+        </id>
+        <one-to-one name="factura" class="aplicacion.hibernate.mapeos.Factura" constrained="true"></one-to-one>
+        <many-to-one name="producto" class="aplicacion.hibernate.mapeos.Producto" fetch="select">
+            <column name="producto" not-null="true" />
+        </many-to-one>
+        <property name="cantidad" type="java.lang.Integer">
+            <column name="cantidad" />
+        </property>
+        <property name="precio" type="big_decimal">
+            <column name="precio" precision="131089" scale="0" />
+        </property>
+        <property name="estado" type="java.lang.Boolean">
+            <column name="estado" />
+        </property>
+    </class>
+</hibernate-mapping>

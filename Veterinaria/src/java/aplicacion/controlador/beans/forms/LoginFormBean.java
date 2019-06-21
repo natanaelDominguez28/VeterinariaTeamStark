@@ -48,6 +48,9 @@ private String nombreUsuario;
         usuarioBean.agregarUsuario();
     }
     
+    
+       
+    
     /**
      * metodo que verifica si el usuario existe en la base de datos.
      * Si existe retorna el string que hace referencia a la pagina del menu.
@@ -73,8 +76,8 @@ private String nombreUsuario;
      */
     public String getNombreUsuarioValidado() {
         Usuario usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioValidado");
-        //return usuario.getNombreUsuario();
-        return usuario.getNombre();
+        
+        return usuario.getNombreUsuario();
     }
     
     /**

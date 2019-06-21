@@ -1,39 +1,38 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 21/06/2019 19:00:35 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="aplicacion.hibernate.mapeos.Usuario" table="usuario" schema="public" optimistic-lock="version">
-        <id name="nombreUsuario" type="string">
-            <column name="nombre_usuario" length="20" />
-            <generator class="assigned" />
-        </id>
-        <property name="password" type="string">
-            <column name="password" length="20" />
-        </property>
-        <property name="estado" type="java.lang.Boolean">
-            <column name="estado" />
-        </property>
-        <property name="nombre" type="string">
-            <column name="nombre" length="40" />
-        </property>
-        <property name="apellido" type="string">
-            <column name="apellido" length="20" />
-        </property>
-        <property name="dni" type="java.lang.Integer">
-            <column name="dni" />
-        </property>
-        <property name="fechaNacimiento" type="date">
-            <column name="fecha_nacimiento" length="13" />
-        </property>
-        <property name="tipoUsuario" type="string">
-            <column name="tipo_usuario" length="20" />
-        </property>
-        <set name="facturas" table="factura" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="cliente" length="20" />
-            </key>
-            <one-to-many class="aplicacion.hibernate.mapeos.Factura" />
-        </set>
-    </class>
+  <class name="aplicacion.modelo.dominio.Usuario" optimistic-lock="version" schema="public" table="usuario">
+    <id name="nombreUsuario" type="string">
+      <column length="20" name="nombre_usuario"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="password" type="string">
+      <column length="20" name="password"/>
+    </property>
+    <property name="estado" type="java.lang.Boolean">
+      <column name="estado"/>
+    </property>
+    <property name="nombre" type="string">
+      <column length="40" name="nombre"/>
+    </property>
+    <property name="apellido" type="string">
+      <column length="20" name="apellido"/>
+    </property>
+    <property name="dni" type="java.lang.Integer">
+      <column name="dni"/>
+    </property>
+    <property name="fechaNacimiento" type="date">
+      <column length="13" name="fecha_nacimiento"/>
+    </property>
+    <property name="tipoUsuario" type="string">
+      <column length="20" name="tipo_usuario"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="facturas" table="factura">
+      <key>
+        <column length="20" name="cliente"/>
+      </key>
+      <one-to-many class="aplicacion.hibernate.mapeos.Factura"/>
+    </set>
+  </class>
 </hibernate-mapping>

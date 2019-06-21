@@ -1,5 +1,5 @@
 package aplicacion.modelo.dominio;
-// Generated 20/06/2019 21:43:23 by Hibernate Tools 4.3.1
+// Generated 21/06/2019 19:00:35 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -12,18 +12,13 @@ import java.util.Set;
 public class Usuario  implements java.io.Serializable {
 
 
-     private long codigo;
-     private String correo;
+     private String nombreUsuario;
      private String password;
+     private Boolean estado;
      private String nombre;
      private String apellido;
-     private Boolean estado;
-     private Date fechaNac;
      private Integer dni;
-     private String direccion;
-     private String barrio;
-     private String localidad;
-     private Integer telefono;
+     private Date fechaNacimiento;
      private String tipoUsuario;
      private Set facturas = new HashSet(0);
 
@@ -31,39 +26,27 @@ public class Usuario  implements java.io.Serializable {
     }
 
 	
-    public Usuario(long codigo) {
-        this.codigo = codigo;
+    public Usuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
-    public Usuario(long codigo, String correo, String password, String nombre, String apellido, Boolean estado, Date fechaNac, Integer dni, String direccion, String barrio, String localidad, Integer telefono, String tipoUsuario, Set facturas) {
-       this.codigo = codigo;
-       this.correo = correo;
+    public Usuario(String nombreUsuario, String password, Boolean estado, String nombre, String apellido, Integer dni, Date fechaNacimiento, String tipoUsuario, Set facturas) {
+       this.nombreUsuario = nombreUsuario;
        this.password = password;
+       this.estado = estado;
        this.nombre = nombre;
        this.apellido = apellido;
-       this.estado = estado;
-       this.fechaNac = fechaNac;
        this.dni = dni;
-       this.direccion = direccion;
-       this.barrio = barrio;
-       this.localidad = localidad;
-       this.telefono = telefono;
+       this.fechaNacimiento = fechaNacimiento;
        this.tipoUsuario = tipoUsuario;
        this.facturas = facturas;
     }
    
-    public long getCodigo() {
-        return this.codigo;
+    public String getNombreUsuario() {
+        return this.nombreUsuario;
     }
     
-    public void setCodigo(long codigo) {
-        this.codigo = codigo;
-    }
-    public String getCorreo() {
-        return this.correo;
-    }
-    
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
     public String getPassword() {
         return this.password;
@@ -71,6 +54,13 @@ public class Usuario  implements java.io.Serializable {
     
     public void setPassword(String password) {
         this.password = password;
+    }
+    public Boolean getEstado() {
+        return this.estado;
+    }
+    
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
     public String getNombre() {
         return this.nombre;
@@ -86,20 +76,6 @@ public class Usuario  implements java.io.Serializable {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-    public Boolean getEstado() {
-        return this.estado;
-    }
-    
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
-    public Date getFechaNac() {
-        return this.fechaNac;
-    }
-    
-    public void setFechaNac(Date fechaNac) {
-        this.fechaNac = fechaNac;
-    }
     public Integer getDni() {
         return this.dni;
     }
@@ -107,33 +83,12 @@ public class Usuario  implements java.io.Serializable {
     public void setDni(Integer dni) {
         this.dni = dni;
     }
-    public String getDireccion() {
-        return this.direccion;
+    public Date getFechaNacimiento() {
+        return this.fechaNacimiento;
     }
     
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-    public String getBarrio() {
-        return this.barrio;
-    }
-    
-    public void setBarrio(String barrio) {
-        this.barrio = barrio;
-    }
-    public String getLocalidad() {
-        return this.localidad;
-    }
-    
-    public void setLocalidad(String localidad) {
-        this.localidad = localidad;
-    }
-    public Integer getTelefono() {
-        return this.telefono;
-    }
-    
-    public void setTelefono(Integer telefono) {
-        this.telefono = telefono;
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
     public String getTipoUsuario() {
         return this.tipoUsuario;

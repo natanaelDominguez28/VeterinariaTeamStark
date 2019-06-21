@@ -17,10 +17,14 @@ import org.hibernate.criterion.Restrictions;
 
 /**
  *
- * @author nata
+ * @author natanael_dominguez
  */
 public class DetalleDAOImp implements IDetalleDAO, Serializable{
 
+    /**
+     * método que crea y guarda un detalle en la base de datos.
+     * @param detalle a guardar
+     */
     @Override
     public void crear(Detalle detalle) {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -30,11 +34,23 @@ public class DetalleDAOImp implements IDetalleDAO, Serializable{
         session.close();
     }
 
+    /**
+     * elimina un detalle guardado en la base de datos.
+     * @param detalle a eliminar
+     */
     @Override
     public void borrar(Detalle detalle) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.delete(detalle);
+        session.getTransaction().commit();
+        session.close();
     }
 
+    /**
+     * actualiza un detalle existente en la base de datos.
+     * @param detalle a modificar
+     */
     @Override
     public void modificar(Detalle detalle) {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -44,6 +60,10 @@ public class DetalleDAOImp implements IDetalleDAO, Serializable{
         session.close();
     }
 
+    /**
+     * 
+     * @return todos los detalles almacenados en la base de datos.
+     */
     @Override
     public List<Detalle> obtenerTodos() {
         ArrayList<Detalle> detalles = new ArrayList();

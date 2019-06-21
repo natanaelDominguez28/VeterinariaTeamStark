@@ -17,10 +17,14 @@ import org.hibernate.criterion.Restrictions;
 
 /**
  *
- * @author nata
+ * @author natanael_dominguez
  */
 public class ProductoDAOImp implements IProductoDAO, Serializable{
 
+    /**
+     * método que crea un producto y lo guarda en la base de datos.
+     * @param producto a guardar
+     */
     @Override
     public void crear(Producto producto) {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -30,11 +34,23 @@ public class ProductoDAOImp implements IProductoDAO, Serializable{
         session.close();
     }
 
+    /**
+     * método que elimina un producto de la base de datos.
+     * @param producto a eliminar
+     */
     @Override
     public void borrar(Producto producto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.delete(producto);
+        session.getTransaction().commit();
+        session.close();
     }
 
+    /**
+     * método que modifica un producto y lo actualiza en la base de datos.
+     * @param producto a modificar
+     */
     @Override
     public void modificar(Producto producto) {
          Session session = HibernateUtil.getSessionFactory().openSession();
@@ -43,7 +59,11 @@ public class ProductoDAOImp implements IProductoDAO, Serializable{
         session.getTransaction().commit();
         session.close();
     }
-
+    
+    /**
+     * método que obtiene todos los productos.
+     * @return la lista de todos los productos que existen en la base de datos.
+     */
     @Override
     public List<Producto> obtenerTodos() {
         ArrayList<Producto> productos = new ArrayList();

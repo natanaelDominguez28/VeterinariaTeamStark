@@ -1,8 +1,7 @@
 package aplicacion.hibernate.mapeos;
-// Generated 20/06/2019 21:43:23 by Hibernate Tools 4.3.1
+// Generated 21/06/2019 19:00:35 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,10 +14,11 @@ public class Producto  implements java.io.Serializable {
      private long codigo;
      private String nombre;
      private String descripcion;
-     private BigDecimal precioLista;
-     private BigDecimal precioCosto;
+     private Double precioLista;
+     private Double precioCosto;
      private Integer stock;
      private Boolean estado;
+     private Integer cantidad;
      private Set detalles = new HashSet(0);
 
     public Producto() {
@@ -28,7 +28,7 @@ public class Producto  implements java.io.Serializable {
     public Producto(long codigo) {
         this.codigo = codigo;
     }
-    public Producto(long codigo, String nombre, String descripcion, BigDecimal precioLista, BigDecimal precioCosto, Integer stock, Boolean estado, Set detalles) {
+    public Producto(long codigo, String nombre, String descripcion, Double precioLista, Double precioCosto, Integer stock, Boolean estado, Integer cantidad, Set detalles) {
        this.codigo = codigo;
        this.nombre = nombre;
        this.descripcion = descripcion;
@@ -36,6 +36,7 @@ public class Producto  implements java.io.Serializable {
        this.precioCosto = precioCosto;
        this.stock = stock;
        this.estado = estado;
+       this.cantidad = cantidad;
        this.detalles = detalles;
     }
    
@@ -60,18 +61,18 @@ public class Producto  implements java.io.Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public BigDecimal getPrecioLista() {
+    public Double getPrecioLista() {
         return this.precioLista;
     }
     
-    public void setPrecioLista(BigDecimal precioLista) {
+    public void setPrecioLista(Double precioLista) {
         this.precioLista = precioLista;
     }
-    public BigDecimal getPrecioCosto() {
+    public Double getPrecioCosto() {
         return this.precioCosto;
     }
     
-    public void setPrecioCosto(BigDecimal precioCosto) {
+    public void setPrecioCosto(Double precioCosto) {
         this.precioCosto = precioCosto;
     }
     public Integer getStock() {
@@ -87,6 +88,13 @@ public class Producto  implements java.io.Serializable {
     
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+    public Integer getCantidad() {
+        return this.cantidad;
+    }
+    
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
     }
     public Set getDetalles() {
         return this.detalles;

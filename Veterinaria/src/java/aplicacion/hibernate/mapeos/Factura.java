@@ -1,8 +1,7 @@
 package aplicacion.hibernate.mapeos;
-// Generated 20/06/2019 21:43:23 by Hibernate Tools 4.3.1
+// Generated 21/06/2019 19:00:35 by Hibernate Tools 4.3.1
 
 
-import aplicacion.modelo.dominio.Usuario;
 import java.util.Date;
 
 /**

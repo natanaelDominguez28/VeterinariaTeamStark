@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20/06/2019 21:43:23 by Hibernate Tools 4.3.1 -->
+<!-- Generated 21/06/2019 19:00:35 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="aplicacion.hibernate.mapeos.Detalle" table="detalle" schema="public" optimistic-lock="version">
         <id name="codigo" type="long">
@@ -17,11 +17,14 @@
         <property name="cantidad" type="java.lang.Integer">
             <column name="cantidad" />
         </property>
-        <property name="precio" type="big_decimal">
-            <column name="precio" precision="131089" scale="0" />
+        <property name="precio" type="java.lang.Double">
+            <column name="precio" precision="17" scale="17" />
         </property>
         <property name="estado" type="java.lang.Boolean">
             <column name="estado" />
+        </property>
+        <property name="total" type="java.lang.Double">
+            <column name="total" precision="17" scale="17" />
         </property>
     </class>
 </hibernate-mapping>

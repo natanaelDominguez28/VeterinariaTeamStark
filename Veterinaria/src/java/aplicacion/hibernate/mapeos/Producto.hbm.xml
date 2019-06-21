@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20/06/2019 21:43:23 by Hibernate Tools 4.3.1 -->
+<!-- Generated 21/06/2019 19:00:35 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="aplicacion.hibernate.mapeos.Producto" table="producto" schema="public" optimistic-lock="version">
         <id name="codigo" type="long">
@@ -9,22 +9,25 @@
             <generator class="assigned" />
         </id>
         <property name="nombre" type="string">
-            <column name="nombre" />
+            <column name="nombre" length="20" />
         </property>
         <property name="descripcion" type="string">
             <column name="descripcion" />
         </property>
-        <property name="precioLista" type="big_decimal">
-            <column name="precio_lista" precision="131089" scale="0" />
+        <property name="precioLista" type="java.lang.Double">
+            <column name="precio_lista" precision="17" scale="17" />
         </property>
-        <property name="precioCosto" type="big_decimal">
-            <column name="precio_costo" precision="131089" scale="0" />
+        <property name="precioCosto" type="java.lang.Double">
+            <column name="precio_costo" precision="17" scale="17" />
         </property>
         <property name="stock" type="java.lang.Integer">
             <column name="stock" />
         </property>
         <property name="estado" type="java.lang.Boolean">
             <column name="estado" />
+        </property>
+        <property name="cantidad" type="java.lang.Integer">
+            <column name="cantidad" />
         </property>
         <set name="detalles" table="detalle" inverse="true" lazy="true" fetch="select">
             <key>

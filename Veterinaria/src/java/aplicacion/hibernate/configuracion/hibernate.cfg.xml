@@ -45,10 +45,10 @@ Contributor(s):
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/Veterinaria</property>
     <property name="hibernate.connection.username">postgres</property>
-    <property name="hibernate.connection.password">Patagonia1</property>
+    <property name="hibernate.connection.password">1234</property>
     <mapping resource="aplicacion/hibernate/mapeos/Usuario.hbm.xml"/>
     <mapping resource="aplicacion/hibernate/mapeos/Producto.hbm.xml"/>
-    <mapping resource="aplicacion/hibernate/mapeos/Detalle.hbm.xml"/>
     <mapping resource="aplicacion/hibernate/mapeos/Factura.hbm.xml"/>
+    <mapping resource="aplicacion/hibernate/mapeos/Detalle.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

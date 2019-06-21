@@ -16,14 +16,14 @@
                 <p:panel header="ACCESO AL SISTEMA DE VETERINARIA" footer="APU 2008 - PROGRAMACION VISUAL 2019">
                     <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel for="txtNombreUsuario" value="Usuario:"/>
-                        <p:inputText id="txtNombreUsuario" required="true" value="#{u}"/>
+                        <p:inputText id="txtNombreUsuario" required="true" value="#{loginFormBean.usuarioBean.usuario}"/>
 
                         <p:outputLabel for="txtPassword" value="Ingrese Contraseña:"/>
-                        <p:password id="txtPassword" required="true" value="#{password}"/>
+                        <p:password id="txtPassword" required="true" value="#{loginFormBean.usuarioBean.usuario.password}"/>
                         <h:panelGroup/>
 
                         <p:commandButton id="btnValidar" value="INGRESAR" update="frmLogin"
-                                         action="#{validarUsuario}"/>
+                                         action="#{loginFormBean.validarUsuario()}"/>
                     </h:panelGrid>
                     <p:separator/><br/>
                     <p:outputLabel/>
@@ -41,28 +41,35 @@
                 <h:form id="frmRegistrar">      
                     <h:panelGrid columns="2">
                         <p:outputLabel for="txtNombreUsuario" value="Nombre de Usuario"/>
-                        <p:inputText id='txtNombreUsuario' value="#{nombreUsuario}"/>
+                        <p:inputText id='txtNombreUsuario' value="#{loginFormBean.usuarioBean.usuario}"/>
 
                         <p:outputLabel for="txtPassword" value="Password"/>
-                        <p:inputText id="txtPassword" value="#{password}"/>
+                        <p:inputText id="txtPassword" value="#{loginFormBean.usuarioBean.usuario.password}"/>
 
                         <p:outputLabel for="txtApellido" value="Apellido"/>
                         <p:inputText id="txtApellido" required="true" size="15" maxlength="15"
-                                     value="#{apellidos}"/>
+                                     value="#{loginFormBean.usuarioBean.usuario.apellido}"/>
 
                         <p:outputLabel for="txtNombre" value="Nombres"/>
-                        <p:inputText id="txtNombre" value="#{nombres}"/>
+                        <p:inputText id="txtNombre" value="#{loginFormBean.usuarioBean.usuario.nombre}"/>
 
                         <p:outputLabel for="txtDni" value="DNI: "/>
                         <p:inputMask id="txtDni" required="true" size="9" maxlength="9"
                                      mask="99.999.999"
-                                     value="#{dni}"/>
+                                     value="#{loginFormBean.usuarioBean.usuario.dni}"/>
 
                         <p:outputLabel for="txtFechaNac" value="Fecha de Nacimiento"/>
                         <p:calendar id="txtFechaNac" pattern="dd-MM-yyyy" mask="true"
                                     required="true" size="10" maxlength="10" locale="es"
-                                    value="#{fechaNac}"/>
+                                    value="#{loginFormBean.usuarioBean.usuario.fechaNac}"/>
+                        
+                         <p:outputLabel for="txtBarrio" value="Barrio"/>
+                        <p:inputText id="txtBarrio" required="true" size="15" maxlength="15"
+                                     value="#{loginFormBean.usuarioBean.usuario.barrio}"/>
 
+                           <p:outputLabel for="txtLocalidad" value="Localidad"/>
+                        <p:inputText id="txtLo" required="true" size="15" maxlength="15"
+                                     value="#{loginFormBean.usuarioBean.usuario.localidad}"/>
                     </h:panelGrid>
                     <p:commandButton id="btnGuardar" value="GUARDAR"
                                      actionListener="#{guardarCambios}"

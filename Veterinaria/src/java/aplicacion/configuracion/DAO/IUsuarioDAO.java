@@ -17,4 +17,8 @@ public interface IUsuarioDAO {
     
     public Usuario validarUsuario(String nombreUsuario, String password);
     public void agregar(Usuario usuario);
+  //interfaz de usuario
+      public void eliminar(Usuario usuario);
+      public void modificar(Usuario usuario);  
+     
 }

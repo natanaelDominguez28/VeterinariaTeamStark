@@ -12,6 +12,7 @@ import aplicacion.modelo.dominio.Usuario;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 /**
  *
@@ -19,6 +20,7 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
+@ViewScoped
 public class UsuarioBean implements Serializable{
     private Usuario usuario;
     private IUsuarioDAO usuarioDAO;
@@ -32,6 +34,13 @@ public class UsuarioBean implements Serializable{
     
     public void agregarUsuario(){
         usuarioDAO.agregar(usuario);
+    }
+    //llamados de los metoodos de la implementacion
+     public void modificarUsuario(){
+    usuarioDAO.modificar(usuario);
+    }
+    public void eliminarUsuario(){
+    usuarioDAO.eliminar(usuario);
     }
     
     

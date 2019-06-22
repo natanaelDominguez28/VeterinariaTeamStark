@@ -5,8 +5,14 @@
  */
 package aplicacion.controlador.beans.forms;
 
+import aplicacion.controlador.bean.UsuarioBean;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+
 
 /**
  *
@@ -14,12 +20,39 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
+@ViewScoped    //agrege el alcance
 public class UsuarioFormBean {
+@ManagedProperty(value = "#{usuarioBean}")
+private UsuarioBean usuarioBean;//get y set de usuarioBean
 
-    /**
-     * Creates a new instance of UsuarioFormBean
-     */
+    
     public UsuarioFormBean() {
     }
-    
+    public void agregarUsuario(){
+    usuarioBean.agregarUsuario();
+    FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario agregado correctamente", "Usuario agregado");
+        FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+    }
+
+    public UsuarioBean getUsuarioBean() {
+        return usuarioBean;
+    }
+
+    public void setUsuarioBean(UsuarioBean usuarioBean) {
+        this.usuarioBean = usuarioBean;
+    }
+    //agregar metodos abm
+    public void modificarUsuario(){
+    usuarioBean.modificarUsuario();
+    FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario modificado correctamente", "Usuario modificado");
+        FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+    }
+    public void eliminarUsuario(){
+   usuarioBean.eliminarUsuario();
+   FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario eliminado correctamente ", "Usuario eliminado");
+        FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+    }
 }

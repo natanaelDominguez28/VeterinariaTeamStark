@@ -44,5 +44,23 @@ public class UsuarioDAOImp implements IUsuarioDAO, Serializable {
         session.getTransaction().commit();
         session.close();
     }
+//agrege los metodos abstractos eliminar y modificar
+    @Override
+    public void eliminar(Usuario usuario) {
+      Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.delete(usuario);
+        session.getTransaction().commit();
+        session.close();  
+    }
+
+    @Override
+    public void modificar(Usuario usuario) {
+      Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.update(usuario);
+        session.getTransaction().commit();
+        session.close();  
+    }
 
 }

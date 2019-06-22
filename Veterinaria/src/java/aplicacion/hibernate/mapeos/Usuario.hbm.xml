@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 21/06/2019 19:00:35 by Hibernate Tools 4.3.1 -->
+<!-- Generated 21/06/2019 23:33:36 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
   <class name="aplicacion.modelo.dominio.Usuario" optimistic-lock="version" schema="public" table="usuario">
     <id name="nombreUsuario" type="string">
@@ -28,11 +28,14 @@
     <property name="tipoUsuario" type="string">
       <column length="20" name="tipo_usuario"/>
     </property>
+    <property name="correo" type="string">
+      <column length="40" name="correo"/>
+    </property>
     <set fetch="select" inverse="true" lazy="true" name="facturas" table="factura">
       <key>
         <column length="20" name="cliente"/>
       </key>
-      <one-to-many class="aplicacion.hibernate.mapeos.Factura"/>
+      <one-to-many class="aplicacion.modelo.dominio.Factura"/>
     </set>
   </class>
 </hibernate-mapping>

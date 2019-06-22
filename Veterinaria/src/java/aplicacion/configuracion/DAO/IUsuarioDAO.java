@@ -16,5 +16,5 @@ import aplicacion.modelo.dominio.Usuario;
 public interface IUsuarioDAO {
     
     public Usuario validarUsuario(String nombreUsuario, String password);
-      public void agregar(Usuario usuario);
+    public void agregar(Usuario usuario);
 }

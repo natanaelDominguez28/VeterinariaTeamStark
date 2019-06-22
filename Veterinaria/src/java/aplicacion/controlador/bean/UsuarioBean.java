@@ -9,16 +9,17 @@ package aplicacion.controlador.bean;
 import aplicacion.configuracion.DAO.IUsuarioDAO;
 import aplicacion.configuracion.DAO.imp.UsuarioDAOImp;
 import aplicacion.modelo.dominio.Usuario;
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author SONY
  */
 @ManagedBean
-@ViewScoped
-public class UsuarioBean {
+@SessionScoped
+public class UsuarioBean implements Serializable{
     private Usuario usuario;
     private IUsuarioDAO usuarioDAO;
  /**

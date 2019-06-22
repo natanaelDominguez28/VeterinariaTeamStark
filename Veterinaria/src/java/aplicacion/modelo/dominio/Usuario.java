@@ -1,5 +1,5 @@
 package aplicacion.modelo.dominio;
-// Generated 21/06/2019 19:00:35 by Hibernate Tools 4.3.1
+// Generated 21/06/2019 23:33:33 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -20,6 +20,7 @@ public class Usuario  implements java.io.Serializable {
      private Integer dni;
      private Date fechaNacimiento;
      private String tipoUsuario;
+     private String correo;
      private Set facturas = new HashSet(0);
 
     public Usuario() {
@@ -29,7 +30,7 @@ public class Usuario  implements java.io.Serializable {
     public Usuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
     }
-    public Usuario(String nombreUsuario, String password, Boolean estado, String nombre, String apellido, Integer dni, Date fechaNacimiento, String tipoUsuario, Set facturas) {
+    public Usuario(String nombreUsuario, String password, Boolean estado, String nombre, String apellido, Integer dni, Date fechaNacimiento, String tipoUsuario, String correo, Set facturas) {
        this.nombreUsuario = nombreUsuario;
        this.password = password;
        this.estado = estado;
@@ -38,6 +39,7 @@ public class Usuario  implements java.io.Serializable {
        this.dni = dni;
        this.fechaNacimiento = fechaNacimiento;
        this.tipoUsuario = tipoUsuario;
+       this.correo = correo;
        this.facturas = facturas;
     }
    
@@ -96,6 +98,13 @@ public class Usuario  implements java.io.Serializable {
     
     public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
+    }
+    public String getCorreo() {
+        return this.correo;
+    }
+    
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
     public Set getFacturas() {
         return this.facturas;

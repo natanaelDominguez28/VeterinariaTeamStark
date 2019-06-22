@@ -6,7 +6,7 @@
 package aplicacion.configuracion.DAO.imp;
 
 import aplicacion.configuracion.DAO.IDetalleDAO;
-import aplicacion.hibernate.util.HibernateUtil;
+import aplicacion.hibernate.configuracion.HibernateUtil;
 import aplicacion.modelo.dominio.Detalle;
 import java.io.Serializable;
 import java.util.ArrayList;

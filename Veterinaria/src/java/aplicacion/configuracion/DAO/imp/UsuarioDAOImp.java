@@ -7,7 +7,7 @@ package aplicacion.configuracion.DAO.imp;
 
 import aplicacion.modelo.dominio.Usuario;
 import aplicacion.configuracion.DAO.IUsuarioDAO;
-import aplicacion.hibernate.util.HibernateUtil;
+import aplicacion.hibernate.configuracion.HibernateUtil;
 import java.io.Serializable;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -27,7 +27,7 @@ public class UsuarioDAOImp implements IUsuarioDAO, Serializable {
         Criteria criteria = session.createCriteria(Usuario.class);
         criteria.add(Restrictions.like("nombreUsuario", nombreUsuario));
         criteria.add(Restrictions.like("password", password));
-        criteria.add(Restrictions.like("estado", true));
+        //criteria.add(Restrictions.like("estado", true ));
         if (!criteria.list().isEmpty()) {
             usuario = (Usuario) criteria.list().get(0);
         }

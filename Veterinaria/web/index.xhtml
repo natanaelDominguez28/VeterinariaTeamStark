@@ -10,7 +10,7 @@
     </h:head>
     <h:body>
         <div class="conteiner">
-            
+
             <h:form id="frmLogin">
                 <p:growl id="mensajeGeneral" showDetail="false" sticky="false"/>
                 <p:panel header="ACCESO AL SISTEMA DE VETERINARIA" footer="APU 2008 - PROGRAMACION VISUAL 2019">
@@ -34,7 +34,7 @@
                     </p:commandButton >
                 </p:panel> 
             </h:form>
-            
+
             <p:dialog id="dlgRegistrar" header="Registrar Usuario" modal="true" widgetVar="dlgRegistrarUsuario"
                       resizable="false"  
                       showEffect="explode" hideEffect="explode">
@@ -44,10 +44,10 @@
                         <p:inputText id='txtNombreUsuario' value="#{loginFormBean.usuarioBean.usuario.nombreUsuario}"/>
 
                         <p:outputLabel for="txtPassword" value="Password"/>
-                        <p:inputText id="txtPassword" value="#{loginFormBean.usuarioBean.usuario.password}"/>
+                        <p:password id="txtPassword" value="#{loginFormBean.usuarioBean.usuario.password}"/>
 
                         <p:outputLabel for="txtApellido" value="Apellido"/>
-                        <p:inputText id="txtApellido" required="true" size="15" maxlength="15"
+                        <p:inputText id="txtApellido" required="true" size="20" maxlength="20"
                                      value="#{loginFormBean.usuarioBean.usuario.apellido}"/>
 
                         <p:outputLabel for="txtNombre" value="Nombres"/>
@@ -62,13 +62,13 @@
                         <p:calendar id="txtFechaNac" pattern="dd-MM-yyyy" mask="true"
                                     required="true" size="10" maxlength="10" locale="es"
                                     value="#{loginFormBean.usuarioBean.usuario.fechaNacimiento}"/>
-                        
+
                     </h:panelGrid>
                     <p:commandButton id="btnGuardar" value="GUARDAR"
                                      actionListener="#{guardarCambios}"
                                      oncomplete="PF('dlgRegistrarUsuario').hide();"
                                      /> 
-                    
+
                 </h:form>
             </p:dialog>
         </div>

@@ -3,24 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aplicacion.controlador.beans.forms;
+package aplicacion.controlador.bean;
 
-import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
 
 /**
  *
  * @author nata
  */
 @ManagedBean
-@ViewScoped
-public class DetalleFormBean implements Serializable{
+@RequestScoped
+public class DetalleBean {
 
     /**
-     * Creates a new instance of DetalleFormBean
+     * Creates a new instance of DetalleBean
      */
-    public DetalleFormBean() {
+    public DetalleBean() {
     }
     
 }

@@ -16,10 +16,10 @@
                 <p:panel header="ACCESO AL SISTEMA DE VETERINARIA" footer="APU 2008 - PROGRAMACION VISUAL 2019">
                     <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel for="txtNombreUsuario" value="Usuario:"/>
-                        <p:inputText id="txtNombreUsuario" required="true" value="#{loginFormBean.usuarioBean.usuario.nombreUsuario}"/>
+                        <p:inputText id="txtNombreUsuario" required="true" value="#{loginFormBean.nombreUsuario}"/>
 
                         <p:outputLabel for="txtPassword" value="Ingrese Contraseña:"/>
-                        <p:password id="txtPassword" required="true" value="#{loginFormBean.usuarioBean.usuario.password}"/>
+                        <p:password id="txtPassword" required="true" value="#{loginFormBean.password}"/>
                         <h:panelGroup/>
 
                         <p:commandButton id="btnValidar" value="INGRESAR" update="frmLogin"

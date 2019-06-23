@@ -5,22 +5,40 @@
  */
 package aplicacion.controlador.beans.forms;
 
+import aplicacion.controlador.bean.ProductoBean;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 
 /**
  *
  * @author nata
  */
 @ManagedBean
-@ViewScoped
+@RequestScoped
 public class ProductoFormBean implements Serializable{
+    @ManagedProperty(value = "#{productoBean}")
+    private ProductoBean productoBean;
 
     /**
      * Creates a new instance of ProductoFormBean
      */
     public ProductoFormBean() {
+        productoBean = new ProductoBean();
     }
+    
+    public void agregarProducto() {
+        productoBean.agregarProducto();
+    }
+
+    public ProductoBean getProductoBean() {
+        return productoBean;
+    }
+
+    public void setProductoBean(ProductoBean productoBean) {
+        this.productoBean = productoBean;
+    }
+    
     
 }

@@ -1,10 +1,36 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./../templates/template.xhtml">
+                template="./../templates/template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <ui:define name="content">
-      hola
+        <h:form id="frmAltaProducto">
+            <p:panel header="Productos">
+                <p:panelGrid columns="2">
+                    <p:outputLabel id="lblNombreProducto" value="Nombre: " for="txtNombreProducto"/>
+                    <p:inputText id="txtNombreProducto" value="#{productoFormBean.productoBean.producto.nombre}"/>
+                    
+                    <p:outputLabel id="lblDescripcion" value="Descripcion: " for="txtDescripcion"/>
+                    <p:inputText id="txtNombreProducto" value="#{productoFormBean.productoBean.producto.descripcion}"/>
+                    
+                    <p:outputLabel id="lblPrecioLista" value="Precio de lista:  " for="txtPrecioLista"/>
+                    <p:inputNumber id="txtPrecioLista" value="#{productoFormBean.productoBean.producto.precioLista}"/>
+                    
+                    <p:outputLabel id="lblPrecioCosto" value="Precio costo:  " for="txtPrecioCosto"/>
+                    <p:inputNumber id="txtPrecioCosto" value="#{productoFormBean.productoBean.producto.precioCosto}"/>
+                    
+                    <p:outputLabel id="lblStock" value="Descripcion: " for="txtStock"/>
+                    <p:inputNumber id="txtStock" value="#{productoFormBean.productoBean.producto.stock}" decimalPlaces="0"/>
+                    
+                    <p:outputLabel id="lblCantidad" value="Cantidad:  " for="txtCantidad"/>
+                    <p:inputNumber id="txtCantidad" value="#{productoFormBean.productoBean.producto.cantidad}" decimalPlaces="0"/>
+
+                    <p:commandButton id="btnGuardar" value="AGREGAR" actionListener="#{productoFormBean.agregarProducto()}"/>
+                </p:panelGrid>
+            </p:panel>
+        </h:form>
     </ui:define>
 
 </ui:composition>

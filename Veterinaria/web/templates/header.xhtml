@@ -19,19 +19,19 @@
                     <h:form>
                         <p:menubar>
                             <p:menuitem value="productos" outcome="/consumidor/producto"/>
-                            <p:menuitem value="volver" outcome="/menu"/>
+                            <p:menuitem value="volver" outcome="/index"/>
                             <f:facet name="options">
-                                <p:outputLabel value="Bienvenido.."/>
-                                <p:commandButton value="Cerrar Seccion" action="#{cerrarSeccion}"
+                                <p:outputLabel value="Bienvenido...#{loginFormBean.nombreUsuarioValidado}"/>
+                                <p:commandButton value="Cerrar Seccion" action="#{loginFormBean.cerrarSesion()}"
                                                  />
                             </f:facet>
                         </p:menubar>
                     </h:form>
                     
-                    <p:panel id="panelIniciarSeccion" rendered="{verificarSesion}">
+                    <p:panel id="panelIniciarSeccion" rendered="#{loginFormBean.verificarSesion()}">
                         <h:form>
-                            <p:outputLabel value="Seccion no iniciada"/>
-                            <p:commandButton value="Iniciar Seccion" action="/index?faces-redirect=true"/>
+                            <p:outputLabel value="Sesion no iniciada"/>
+                            <p:commandButton value="Iniciar Sesion" action="/index?faces-redirect=true"/>
                         </h:form>
                     </p:panel>
                 </div>

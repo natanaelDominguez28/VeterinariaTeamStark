@@ -5,8 +5,10 @@
  */
 package aplicacion.controlador.beans.forms;
 
+import aplicacion.controlador.bean.DetalleBean;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 /**
@@ -16,11 +18,28 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class DetalleFormBean implements Serializable{
+    @ManagedProperty(value = "#{detalleBean}")
+    private DetalleBean detalleBean;
 
     /**
      * Creates a new instance of DetalleFormBean
      */
     public DetalleFormBean() {
+        detalleBean = new DetalleBean();
     }
+    
+    public void agregarDetalle(){
+        
+    }
+
+    public DetalleBean getDetalleBean() {
+        return detalleBean;
+    }
+
+    public void setDetalleBean(DetalleBean detalleBean) {
+        this.detalleBean = detalleBean;
+    }
+    
+    
     
 }

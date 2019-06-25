@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
 
         <h:outputStylesheet name="./css/login.css"/>
@@ -42,23 +43,28 @@
                 <h:form id="frmRegistrar">      
                     <h:panelGrid columns="2">
                         <p:outputLabel for="txtNombreUsuario" value="Nombre de Usuario"/>
-                        <p:inputText id="txtNombreUsuario" value="#{usuarioFormBean.usuarioBean.usuario.nombreUsuario}" required="true" requiredMessage="Debe ingresar un nombre de usuario"/>
+                        <p:inputText id="txtNombreUsuario" value="#{usuarioFormBean.usuarioBean.usuario.nombreUsuario}" 
+                                     required="true" placeholder="Usuario"
+                                     requiredMessage="Debe ingresar un nombre de usuario"/>
 
                         <p:outputLabel for="txtPassword" value="Password"/>
-                        <p:password id="txtPassword" value="#{usuarioFormBean.usuarioBean.usuario.password}" required="true" requiredMessage="Debe ingresar una contraseña"/>
+                        <p:password id="txtPassword" value="#{usuarioFormBean.usuarioBean.usuario.password}" required="true" placeholder="password" requiredMessage="Debe ingresar una contraseña"/>
 
                         <p:outputLabel for="txtApellido" value="Apellido"/>
                         <p:inputText id="txtApellido" required="true" size="20" maxlength="20"
+                                     placeholder="apellido"
                                      value="#{usuarioFormBean.usuarioBean.usuario.apellido}" 
                                      requiredMessage="Debe ingresar su apellido"/>
 
                         <p:outputLabel for="txtNombre" value="Nombres"/>
                         <p:inputText id="txtNombre" value="#{usuarioFormBean.usuarioBean.usuario.nombre}"
+                                     placeholder="nombres"
                                      required="true" requiredMessage="Debe ingresar su nombre"/>
 
                         <p:outputLabel for="txtDni" value="DNI: "/>
                         <p:inputMask id="txtDni" required="true" size="9" maxlength="9"
                                      mask="99.999.999"
+                                     placeholder="dni"
                                      value="#{usuarioFormBean.usuarioBean.usuario.dni}" requiredMessage="Debe ingresar su dni"/>
 
                         <p:outputLabel for="txtFechaNac" value="Fecha de Nacimiento"/>
@@ -66,6 +72,14 @@
                                     required="true" size="10" maxlength="10" locale="es"
                                     value="#{usuarioFormBean.usuarioBean.usuario.fechaNacimiento}"
                                     requiredMessage="Debe ingresar su fecha de nacimiento"/>
+                        <p:outputLabel id="lblCorreo" for="txtCorreo" value="E-mail: "/>
+                        <p:inputText id="txtCorreo" required="true" requiredMessage="Debe ingresar su correo electrónico"
+                                     placeholder="abc@def.com"
+                                     validatorMessage="Correo electronico no valido"
+                                     value="#{usuarioFormBean.usuarioBean.usuario.correo}">
+                           <f:validateRegex
+                               pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                        </p:inputText>
 
                     </h:panelGrid>
                     <p:commandButton id="btnGuardar" value="GUARDAR"

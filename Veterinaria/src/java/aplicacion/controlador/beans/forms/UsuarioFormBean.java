@@ -29,6 +29,9 @@ public class UsuarioFormBean implements Serializable {
 
     public void agregarUsuario() {
         usuarioBean.agregarUsuario();
+        usuarioBean.getUsuario().setEstado(Boolean.TRUE);
+        usuarioBean.getUsuario().setTipoUsuario("consumidor");
+        usuarioBean.modificarUsuario();
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario agregado correctamente", "Usuario agregado");
         FacesContext.getCurrentInstance().addMessage(null, facesMessage);

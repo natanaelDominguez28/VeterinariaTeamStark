@@ -52,6 +52,13 @@ public class ProductoFormBean implements Serializable{
    private int cantidad;
    private double total=0.0;
    private CompraProducto compraProducto = new CompraProducto();
+   
+      
+   // constructor 
+    
+    public ProductoFormBean(){
+  
+    }
 
     
    // getters and setters
@@ -111,16 +118,6 @@ public class ProductoFormBean implements Serializable{
         this.compraProducto = compraProducto;
     }
     
-   
-   // constructor 
-    
-    public ProductoFormBean(){
-    
-   
-        
-        
-        
-        
-    }
+
    
 }

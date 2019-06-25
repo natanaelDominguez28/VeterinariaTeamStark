@@ -28,6 +28,18 @@ public class Producto  implements java.io.Serializable {
     public Producto(long codigo) {
         this.codigo = codigo;
     }
+
+    public Producto(String nombre, String descripcion, Double precioLista, Double precioCosto, Integer stock, Boolean estado, Integer cantidad) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precioLista = precioLista;
+        this.precioCosto = precioCosto;
+        this.stock = stock;
+        this.estado = estado;
+        this.cantidad = cantidad;
+    }
+    
+    
     public Producto(long codigo, String nombre, String descripcion, Double precioLista, Double precioCosto, Integer stock, Boolean estado, Integer cantidad, Set detalles) {
        this.codigo = codigo;
        this.nombre = nombre;

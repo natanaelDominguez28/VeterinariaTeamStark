@@ -38,35 +38,40 @@
             <p:dialog id="dlgRegistrar" header="Registrar Usuario" modal="true" widgetVar="dlgRegistrarUsuario"
                       resizable="false"  
                       showEffect="explode" hideEffect="explode">
+                <p:growl id="mensaje" showDetail="true"/>
                 <h:form id="frmRegistrar">      
                     <h:panelGrid columns="2">
                         <p:outputLabel for="txtNombreUsuario" value="Nombre de Usuario"/>
-                        <p:inputText id='txtNombreUsuario' value="#{loginFormBean.usuarioBean.usuario.nombreUsuario}"/>
+                        <p:inputText id="txtNombreUsuario" value="#{usuarioFormBean.usuarioBean.usuario.nombreUsuario}" required="true" requiredMessage="Debe ingresar un nombre de usuario"/>
 
                         <p:outputLabel for="txtPassword" value="Password"/>
-                        <p:password id="txtPassword" value="#{loginFormBean.usuarioBean.usuario.password}"/>
+                        <p:password id="txtPassword" value="#{usuarioFormBean.usuarioBean.usuario.password}" required="true" requiredMessage="Debe ingresar una contraseña"/>
 
                         <p:outputLabel for="txtApellido" value="Apellido"/>
                         <p:inputText id="txtApellido" required="true" size="20" maxlength="20"
-                                     value="#{loginFormBean.usuarioBean.usuario.apellido}"/>
+                                     value="#{usuarioFormBean.usuarioBean.usuario.apellido}" 
+                                     requiredMessage="Debe ingresar su apellido"/>
 
                         <p:outputLabel for="txtNombre" value="Nombres"/>
-                        <p:inputText id="txtNombre" value="#{loginFormBean.usuarioBean.usuario.nombre}"/>
+                        <p:inputText id="txtNombre" value="#{usuarioFormBean.usuarioBean.usuario.nombre}"
+                                     required="true" requiredMessage="Debe ingresar su nombre"/>
 
                         <p:outputLabel for="txtDni" value="DNI: "/>
                         <p:inputMask id="txtDni" required="true" size="9" maxlength="9"
                                      mask="99.999.999"
-                                     value="#{loginFormBean.usuarioBean.usuario.dni}"/>
+                                     value="#{usuarioFormBean.usuarioBean.usuario.dni}" requiredMessage="Debe ingresar su dni"/>
 
                         <p:outputLabel for="txtFechaNac" value="Fecha de Nacimiento"/>
                         <p:calendar id="txtFechaNac" pattern="dd-MM-yyyy" mask="true"
                                     required="true" size="10" maxlength="10" locale="es"
-                                    value="#{loginFormBean.usuarioBean.usuario.fechaNacimiento}"/>
+                                    value="#{usuarioFormBean.usuarioBean.usuario.fechaNacimiento}"
+                                    requiredMessage="Debe ingresar su fecha de nacimiento"/>
 
                     </h:panelGrid>
                     <p:commandButton id="btnGuardar" value="GUARDAR"
-                                     actionListener="#{guardarCambios}"
+                                     actionListener="#{usuarioFormBean.agregarUsuario()}"
                                      oncomplete="PF('dlgRegistrarUsuario').hide();"
+                                     update="mensaje"
                                      /> 
 
                 </h:form>

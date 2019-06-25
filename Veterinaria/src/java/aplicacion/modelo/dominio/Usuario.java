@@ -17,7 +17,7 @@ public class Usuario  implements java.io.Serializable {
      private Boolean estado;
      private String nombre;
      private String apellido;
-     private Integer dni;
+     private String dni;
      private Date fechaNacimiento;
      private String tipoUsuario;
      private String correo;
@@ -30,7 +30,20 @@ public class Usuario  implements java.io.Serializable {
     public Usuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
     }
-    public Usuario(String nombreUsuario, String password, Boolean estado, String nombre, String apellido, Integer dni, Date fechaNacimiento, String tipoUsuario, String correo, Set facturas) {
+
+    public Usuario(String nombreUsuario, String password, Boolean estado, String nombre, String apellido, String dni, Date fechaNacimiento, String tipoUsuario, String correo) {
+        this.nombreUsuario = nombreUsuario;
+        this.password = password;
+        this.estado = estado;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.fechaNacimiento = fechaNacimiento;
+        this.tipoUsuario = tipoUsuario;
+        this.correo = correo;
+    }
+    
+    public Usuario(String nombreUsuario, String password, Boolean estado, String nombre, String apellido, String dni, Date fechaNacimiento, String tipoUsuario, String correo, Set facturas) {
        this.nombreUsuario = nombreUsuario;
        this.password = password;
        this.estado = estado;
@@ -78,11 +91,11 @@ public class Usuario  implements java.io.Serializable {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-    public Integer getDni() {
+    public String getDni() {
         return this.dni;
     }
     
-    public void setDni(Integer dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
     public Date getFechaNacimiento() {

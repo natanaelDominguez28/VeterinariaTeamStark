@@ -1,29 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 21/06/2019 23:33:36 by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/06/2019 12:41:22 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class name="aplicacion.modelo.dominio.Detalle" optimistic-lock="version" schema="public" table="detalle">
-    <id name="codigo" type="long">
-      <column name="codigo"/>
-      <generator class="foreign">
-        <param name="property">factura</param>
-      </generator>
-    </id>
-    <one-to-one class="aplicacion.modelo.dominio.Factura" constrained="true" name="factura"/>
-    <many-to-one class="aplicacion.modelo.dominio.Producto" fetch="select" name="producto">
-      <column name="producto" not-null="true"/>
-    </many-to-one>
-    <property name="cantidad" type="java.lang.Integer">
-      <column name="cantidad"/>
-    </property>
-    <property name="precio" type="java.lang.Double">
-      <column name="precio" precision="17" scale="17"/>
-    </property>
-    <property name="estado" type="java.lang.Boolean">
-      <column name="estado"/>
-    </property>
-    <property name="total" type="java.lang.Double">
-      <column name="total" precision="17" scale="17"/>
-    </property>
-  </class>
+    <class name="aplicacion.modelo.dominio.Detalle" table="detalle" schema="public" optimistic-lock="version">
+        <id name="codigo" type="long">
+            <column name="codigo" />
+            <generator class="foreign">
+                <param name="property">factura</param>
+            </generator>
+        </id>
+        <one-to-one name="factura" class="aplicacion.modelo.dominio.Factura" constrained="true"></one-to-one>
+        <many-to-one name="producto" class="aplicacion.modelo.dominio.Producto" fetch="select">
+            <column name="producto" not-null="true" />
+        </many-to-one>
+        <property name="cantidad" type="java.lang.Integer">
+            <column name="cantidad" />
+        </property>
+        <property name="precio" type="java.lang.Double">
+            <column name="precio" precision="17" scale="17" />
+        </property>
+        <property name="estado" type="java.lang.Boolean">
+            <column name="estado" />
+        </property>
+        <property name="total" type="java.lang.Double">
+            <column name="total" precision="17" scale="17" />
+        </property>
+    </class>
 </hibernate-mapping>

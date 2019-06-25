@@ -11,7 +11,6 @@ import aplicacion.configuracion.DAO.imp.UsuarioDAOImp;
 import aplicacion.modelo.dominio.Usuario;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 /**
@@ -19,7 +18,6 @@ import javax.faces.bean.ViewScoped;
  * @author SONY
  */
 @ManagedBean
-@SessionScoped
 @ViewScoped
 public class UsuarioBean implements Serializable{
     private Usuario usuario;

@@ -14,7 +14,12 @@ import aplicacion.modelo.dominio.Usuario;
  * @author mabel
  */
 public interface IUsuarioDAO {
-    
+    /**
+     * método a implementar 
+     * @param nombreUsuario
+     * @param password
+     * @return el usuario validado segun su nombre de usuario y password
+     */
     public Usuario validarUsuario(String nombreUsuario, String password);
     public void agregar(Usuario usuario);
   //interfaz de usuario

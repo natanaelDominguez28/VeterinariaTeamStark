@@ -6,6 +6,7 @@
 package aplicacion.configuracion.DAO;
 
 import aplicacion.modelo.dominio.Usuario;
+import java.util.List;
 
 
 
@@ -25,5 +26,6 @@ public interface IUsuarioDAO {
   //interfaz de usuario
       public void eliminar(Usuario usuario);
       public void modificar(Usuario usuario);  
-     
+     public List<Usuario> obtenerUsuario();
+     Usuario obtenerUsuario(String correoElectronico);
 }

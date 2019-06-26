@@ -10,6 +10,7 @@ import aplicacion.configuracion.DAO.IUsuarioDAO;
 import aplicacion.configuracion.DAO.imp.UsuarioDAOImp;
 import aplicacion.modelo.dominio.Usuario;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -33,12 +34,15 @@ public class UsuarioBean implements Serializable{
     public void agregarUsuario(){
         usuarioDAO.agregar(usuario);
     }
+   
     //llamados de los metoodos de la implementacion
      public void modificarUsuario(){
-    usuarioDAO.modificar(usuario);
+     IUsuarioDAO iUsuarioDAO=new UsuarioDAOImp();
+    iUsuarioDAO.modificar(usuario);
     }
     public void eliminarUsuario(){
-    usuarioDAO.eliminar(usuario);
+    IUsuarioDAO iUsuarioDAO=new UsuarioDAOImp();
+    iUsuarioDAO.eliminar(usuario);
     }
     
     
@@ -49,6 +53,12 @@ public class UsuarioBean implements Serializable{
      * @return  null si no lo encuentra*/
     public Usuario validarUsuario(String nombreUsuario, String password){
         return usuarioDAO.validarUsuario(nombreUsuario, password);
+    }
+    
+   public List<Usuario> obtenerUsuario(){
+    IUsuarioDAO iUsuarioDAO=new UsuarioDAOImp();
+    return iUsuarioDAO.obtenerUsuario();
+    
     }
 
     public Usuario getUsuario() {

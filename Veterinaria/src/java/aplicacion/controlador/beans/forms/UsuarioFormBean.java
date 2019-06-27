@@ -24,7 +24,7 @@ import org.primefaces.context.RequestContext;
  */
 @ManagedBean
 @ViewScoped    //agrege el alcance
-@RequestScoped
+//@RequestScoped
 public class UsuarioFormBean implements Serializable {
 @ManagedProperty(value = "#{usuarioBean}")
 private UsuarioBean usuarioBean;
@@ -63,7 +63,7 @@ private List<Usuario> listaDeUsuarios;
     public void agregarUsuario() {
         usuarioBean.agregarUsuario();
         usuarioBean.getUsuario().setEstado(Boolean.TRUE);
-        usuarioBean.getUsuario().setTipoUsuario("consumidor");
+        usuarioBean.getUsuario().setTipoUsuario("administrador");
         usuarioBean.modificarUsuario();
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario agregado correctamente", "Usuario agregado");

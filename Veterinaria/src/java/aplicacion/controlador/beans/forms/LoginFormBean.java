@@ -20,40 +20,38 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @RequestScoped
-public class LoginFormBean implements Serializable{
-    
-private String nombreUsuario;
-    private String password;
-    private String tipoUsuario;
-    
-    private boolean desactivar = true;
+public class LoginFormBean implements Serializable {
+
     @ManagedProperty(value = "#{usuarioBean}")
     private UsuarioBean usuarioBean;
+    private String nombreUsuario;
+    private String password;
+    private String tipoUsuario;
+
+    private boolean desactivar = true;
 
     /**
      * Creates a new instance of LoginFormBean
      */
-    public LoginFormBean() {
+    public LoginFormBean() {    
     }
     
-    public void activarColumnasOpciones(){
+    public void activarColumnasOpciones() {
         setDesactivar(true);
     }
-    
-    public void desactivarColumnasOpciones(){
+
+    public void desactivarColumnasOpciones() {
         setDesactivar(false);
     }
-    
-    public void agregarUsuario(){
+
+    public void agregarUsuario() {
         usuarioBean.agregarUsuario();
     }
-    
-    
-       
-    
+
     /**
-     * metodo que verifica si el usuario existe en la base de datos.
-     * Si existe retorna el string que hace referencia a la pagina del menu.
+     * metodo que verifica si el usuario existe en la base de datos. Si existe
+     * retorna el string que hace referencia a la pagina del menu.
+     *
      * @return null si no existe y no le permite acceder al menu
      */
     public String validarUsuario() {
@@ -70,19 +68,19 @@ private String nombreUsuario;
         }
         return resultado;
     }
-    
+
     /**
      * @return el nombre del usuario que inicio sesion
      */
     public String getNombreUsuarioValidado() {
         Usuario usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioValidado");
-        
+
         return usuario.getNombreUsuario();
     }
-    
+
     /**
      * metodo que devuelve una cadena que hace referencia a la pagina del login
-     * @return la pagina del login 
+     * @return la pagina del login
      */
     public String cerrarSesion() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
@@ -105,10 +103,9 @@ private String nombreUsuario;
     }
 
     /**
-     * Metodo que devuelve un entero que hace referencia al nivel de usuario
-     * 1 - Administrativo
-     * 2 - Consumidor
-    
+     * Metodo que devuelve un entero que hace referencia al nivel de usuario 1 -
+     * Administrativo 2 - Consumidor
+     *
      * @return un entero que hace referencia al tipo de usuario
      */
     public int verificarTipoUsuario() {
@@ -121,7 +118,7 @@ private String nombreUsuario;
             case "Consumidor":
                 resultado = 2;
                 break;
-           
+
         }
         return resultado;
     }

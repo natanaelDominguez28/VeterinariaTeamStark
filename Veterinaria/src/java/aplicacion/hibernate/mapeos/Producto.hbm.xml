@@ -1,36 +1,35 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/06/2019 12:41:22 by Hibernate Tools 4.3.1 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/06/2019 22:39:32 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="aplicacion.modelo.dominio.Producto" table="producto" schema="public" optimistic-lock="version">
-        <id name="codigo" type="long">
-            <column name="codigo" />
-            <generator class="assigned" />
-        </id>
-        <property name="nombre" type="string">
-            <column name="nombre" length="20" />
-        </property>
-        <property name="descripcion" type="string">
-            <column name="descripcion" />
-        </property>
-        <property name="precioLista" type="java.lang.Double">
-            <column name="precio_lista" precision="17" scale="17" />
-        </property>
-        <property name="precioCosto" type="java.lang.Double">
-            <column name="precio_costo" precision="17" scale="17" />
-        </property>
-        <property name="stock" type="java.lang.Integer">
-            <column name="stock" />
-        </property>
-        <property name="estado" type="java.lang.Boolean">
-            <column name="estado" />
-        </property>
-        <set name="detalles" table="detalle" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="producto" not-null="true" />
-            </key>
-            <one-to-many class="aplicacion.modelo.dominio.Detalle" />
-        </set>
-    </class>
+  <class name="aplicacion.modelo.dominio.Producto" optimistic-lock="version" schema="public" table="producto">
+    <id name="codigo" type="long">
+      <column name="codigo"/>
+      <generator class="increment"/>
+    </id>
+    <property name="nombre" type="string">
+      <column length="20" name="nombre"/>
+    </property>
+    <property name="descripcion" type="string">
+      <column name="descripcion"/>
+    </property>
+    <property name="precioLista" type="java.lang.Double">
+      <column name="precio_lista" precision="17" scale="17"/>
+    </property>
+    <property name="precioCosto" type="java.lang.Double">
+      <column name="precio_costo" precision="17" scale="17"/>
+    </property>
+    <property name="stock" type="java.lang.Integer">
+      <column name="stock"/>
+    </property>
+    <property name="estado" type="java.lang.Boolean">
+      <column name="estado"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="detalles" table="detalle">
+      <key>
+        <column name="producto" not-null="true"/>
+      </key>
+      <one-to-many class="aplicacion.modelo.dominio.Detalle"/>
+    </set>
+  </class>
 </hibernate-mapping>

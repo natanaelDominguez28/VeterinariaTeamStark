@@ -69,7 +69,7 @@ public class ProductoDAOImp implements IProductoDAO, Serializable{
         ArrayList<Producto> productos = new ArrayList();
         Session session = HibernateUtil.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(Producto.class);
-        criteria.add(Restrictions.like("estado", true));
+        //criteria.add(Restrictions.like("estado", true));
         if (!(criteria.list().isEmpty())){
              productos = (ArrayList<Producto>)criteria.list();
         session.close();

@@ -5,8 +5,8 @@
  */
 package aplicacion.hibernate.configuracion;
 
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 /**
  * Hibernate Utility class with a convenient method to get Session Factory
@@ -16,25 +16,19 @@ import org.hibernate.cfg.Configuration;
  */
 public class HibernateUtil {
 
-    private static final SessionFactory sessionFactory = buildSessionFactory();
+    private static final SessionFactory sessionFactory;
     
-    private static SessionFactory buildSessionFactory() {
-		try {
-			// load from different directory
-			SessionFactory sessionFactory = new Configuration().configure(
-					"/aplicacion/hibernate/configuracion/hibernate.cfg.xml")
-					.buildSessionFactory();
-
-			return sessionFactory;
-
-		} catch (Throwable ex) {
-			// Make sure you log the exception, as it might be swallowed
-			System.err.println("Initial SessionFactory creation failed." + ex);
-			throw new ExceptionInInitializerError(ex);
-		}
-	}
-    
-    
+    static {
+        try {
+            // Create the SessionFactory from standard (hibernate.cfg.xml) 
+            // config file.
+            sessionFactory = new AnnotationConfiguration().configure("/aplicacion/hibernate/configuracion/hibernate.cfg.xml").buildSessionFactory();
+        } catch (Throwable ex) {
+            // Log the exception. 
+            System.err.println("Initial SessionFactory creation failed." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+    }
     
     public static SessionFactory getSessionFactory() {
         return sessionFactory;

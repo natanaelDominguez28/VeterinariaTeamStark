@@ -1,5 +1,5 @@
 package aplicacion.modelo.dominio;
-// Generated 21/06/2019 23:33:33 by Hibernate Tools 4.3.1
+// Generated 26/06/2019 22:39:30 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -12,6 +12,7 @@ import java.util.Set;
 public class Usuario  implements java.io.Serializable {
 
 
+     private long codigo;
      private String nombreUsuario;
      private String password;
      private Boolean estado;
@@ -27,23 +28,13 @@ public class Usuario  implements java.io.Serializable {
     }
 
 	
-    public Usuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
-    }
-
-    public Usuario(String nombreUsuario, String password, Boolean estado, String nombre, String apellido, String dni, Date fechaNacimiento, String tipoUsuario, String correo) {
+    public Usuario(long codigo, String nombreUsuario, String password) {
+        this.codigo = codigo;
         this.nombreUsuario = nombreUsuario;
         this.password = password;
-        this.estado = estado;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.dni = dni;
-        this.fechaNacimiento = fechaNacimiento;
-        this.tipoUsuario = tipoUsuario;
-        this.correo = correo;
     }
-    
-    public Usuario(String nombreUsuario, String password, Boolean estado, String nombre, String apellido, String dni, Date fechaNacimiento, String tipoUsuario, String correo, Set facturas) {
+    public Usuario(long codigo, String nombreUsuario, String password, Boolean estado, String nombre, String apellido, String dni, Date fechaNacimiento, String tipoUsuario, String correo, Set facturas) {
+       this.codigo = codigo;
        this.nombreUsuario = nombreUsuario;
        this.password = password;
        this.estado = estado;
@@ -56,6 +47,13 @@ public class Usuario  implements java.io.Serializable {
        this.facturas = facturas;
     }
    
+    public long getCodigo() {
+        return this.codigo;
+    }
+    
+    public void setCodigo(long codigo) {
+        this.codigo = codigo;
+    }
     public String getNombreUsuario() {
         return this.nombreUsuario;
     }

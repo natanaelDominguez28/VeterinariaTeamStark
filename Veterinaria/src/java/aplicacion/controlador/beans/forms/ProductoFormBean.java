@@ -5,6 +5,7 @@
  */
 package aplicacion.controlador.beans.forms;
 
+import aplicacion.configuracion.DAO.imp.ProductoDAOImp;
 import aplicacion.controlador.bean.ProductoBean;
 import aplicacion.modelo.dominio.Producto;
 import aplicaion.modelo.util.CompraProducto;
@@ -45,8 +46,11 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class ProductoFormBean implements Serializable{
+    @ManagedProperty(value = "#{productoBean}")
+    private ProductoBean productoBean;
    private DetalleFormBean detalleFormBean;
-   private List<Producto> listaProductos = new ArrayList<>();
+   //private List<Producto> listaProductos = new ArrayList<>();
+   private List<Producto> listaProductos = new ProductoDAOImp().obtenerTodos();
    private Producto producto = new Producto();
    private List<CompraProducto> lstaProductoParcial;
    private int cantidad;
@@ -117,7 +121,16 @@ public class ProductoFormBean implements Serializable{
     public void setCompraProducto(CompraProducto compraProducto) {
         this.compraProducto = compraProducto;
     }
+
+    public ProductoBean getProductoBean() {
+        return productoBean;
+    }
+
+    public void setProductoBean(ProductoBean productoBean) {
+        this.productoBean = productoBean;
+    }
     
 
+    
    
 }

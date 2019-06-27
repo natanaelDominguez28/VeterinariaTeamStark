@@ -1,5 +1,5 @@
 package aplicacion.modelo.dominio;
-// Generated 21/06/2019 23:33:33 by Hibernate Tools 4.3.1
+// Generated 26/06/2019 22:39:30 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -18,7 +18,6 @@ public class Producto  implements java.io.Serializable {
      private Double precioCosto;
      private Integer stock;
      private Boolean estado;
-     private Integer cantidad;
      private Set detalles = new HashSet(0);
 
     public Producto() {
@@ -28,19 +27,7 @@ public class Producto  implements java.io.Serializable {
     public Producto(long codigo) {
         this.codigo = codigo;
     }
-
-    public Producto(String nombre, String descripcion, Double precioLista, Double precioCosto, Integer stock, Boolean estado, Integer cantidad) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precioLista = precioLista;
-        this.precioCosto = precioCosto;
-        this.stock = stock;
-        this.estado = estado;
-        this.cantidad = cantidad;
-    }
-    
-    
-    public Producto(long codigo, String nombre, String descripcion, Double precioLista, Double precioCosto, Integer stock, Boolean estado, Integer cantidad, Set detalles) {
+    public Producto(long codigo, String nombre, String descripcion, Double precioLista, Double precioCosto, Integer stock, Boolean estado, Set detalles) {
        this.codigo = codigo;
        this.nombre = nombre;
        this.descripcion = descripcion;
@@ -48,7 +35,6 @@ public class Producto  implements java.io.Serializable {
        this.precioCosto = precioCosto;
        this.stock = stock;
        this.estado = estado;
-       this.cantidad = cantidad;
        this.detalles = detalles;
     }
    
@@ -100,13 +86,6 @@ public class Producto  implements java.io.Serializable {
     
     public void setEstado(Boolean estado) {
         this.estado = estado;
-    }
-    public Integer getCantidad() {
-        return this.cantidad;
-    }
-    
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
     }
     public Set getDetalles() {
         return this.detalles;

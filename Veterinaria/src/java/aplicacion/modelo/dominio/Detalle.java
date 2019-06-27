@@ -1,5 +1,5 @@
 package aplicacion.modelo.dominio;
-// Generated 21/06/2019 23:33:33 by Hibernate Tools 4.3.1
+// Generated 26/06/2019 22:39:30 by Hibernate Tools 4.3.1
 
 
 
@@ -15,7 +15,7 @@ public class Detalle  implements java.io.Serializable {
      private Integer cantidad;
      private Double precio;
      private Boolean estado;
-     private Double total;
+     private Double precioTotal;
 
     public Detalle() {
     }
@@ -25,13 +25,13 @@ public class Detalle  implements java.io.Serializable {
         this.factura = factura;
         this.producto = producto;
     }
-    public Detalle(Factura factura, Producto producto, Integer cantidad, Double precio, Boolean estado, Double total) {
+    public Detalle(Factura factura, Producto producto, Integer cantidad, Double precio, Boolean estado, Double precioTotal) {
        this.factura = factura;
        this.producto = producto;
        this.cantidad = cantidad;
        this.precio = precio;
        this.estado = estado;
-       this.total = total;
+       this.precioTotal = precioTotal;
     }
    
     public long getCodigo() {
@@ -76,12 +76,12 @@ public class Detalle  implements java.io.Serializable {
     public void setEstado(Boolean estado) {
         this.estado = estado;
     }
-    public Double getTotal() {
-        return this.total;
+    public Double getPrecioTotal() {
+        return this.precioTotal;
     }
     
-    public void setTotal(Double total) {
-        this.total = total;
+    public void setPrecioTotal(Double precioTotal) {
+        this.precioTotal = precioTotal;
     }
 
 

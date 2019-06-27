@@ -1,42 +1,44 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/06/2019 12:41:22 by Hibernate Tools 4.3.1 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/06/2019 22:39:32 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="aplicacion.modelo.dominio.Usuario" table="usuario" schema="public" optimistic-lock="version">
-        <id name="nombreUsuario" type="string">
-            <column name="nombre_usuario" length="20" />
-            <generator class="assigned" />
-        </id>
-        <property name="password" type="string">
-            <column name="password" length="20" not-null="true" />
-        </property>
-        <property name="estado" type="java.lang.Boolean">
-            <column name="estado" />
-        </property>
-        <property name="nombre" type="string">
-            <column name="nombre" length="40" />
-        </property>
-        <property name="apellido" type="string">
-            <column name="apellido" length="20" />
-        </property>
-        <property name="dni" type="string">
-            <column name="dni" length="9" />
-        </property>
-        <property name="fechaNacimiento" type="date">
-            <column name="fecha_nacimiento" length="13" />
-        </property>
-        <property name="tipoUsuario" type="string">
-            <column name="tipo_usuario" length="20" />
-        </property>
-        <property name="correo" type="string">
-            <column name="correo" length="40" />
-        </property>
-        <set name="facturas" table="factura" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="cliente" length="20" />
-            </key>
-            <one-to-many class="aplicacion.modelo.dominio.Factura" />
-        </set>
-    </class>
+  <class name="aplicacion.modelo.dominio.Usuario" optimistic-lock="version" schema="public" table="usuario">
+    <id name="codigo" type="long">
+      <column name="codigo"/>
+      <generator class="increment"/>
+    </id>
+    <property name="nombreUsuario" type="string">
+      <column length="20" name="nombre_usuario" not-null="true"/>
+    </property>
+    <property name="password" type="string">
+      <column length="20" name="password" not-null="true"/>
+    </property>
+    <property name="estado" type="java.lang.Boolean">
+      <column name="estado"/>
+    </property>
+    <property name="nombre" type="string">
+      <column length="40" name="nombre"/>
+    </property>
+    <property name="apellido" type="string">
+      <column length="20" name="apellido"/>
+    </property>
+    <property name="dni" type="string">
+      <column length="10" name="dni"/>
+    </property>
+    <property name="fechaNacimiento" type="date">
+      <column length="13" name="fecha_nacimiento"/>
+    </property>
+    <property name="tipoUsuario" type="string">
+      <column length="20" name="tipo_usuario"/>
+    </property>
+    <property name="correo" type="string">
+      <column length="40" name="correo"/>
+    </property>
+    <set fetch="join" inverse="true" lazy="true" name="facturas" table="factura">
+      <key>
+        <column name="cliente"/>
+      </key>
+      <one-to-many class="aplicacion.modelo.dominio.Factura"/>
+    </set>
+  </class>
 </hibernate-mapping>

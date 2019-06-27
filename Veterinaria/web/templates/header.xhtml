@@ -9,33 +9,31 @@
     <body>
 
         <ui:composition>
-                <div id="tooplate_header"> 
-                    <div id="titulo">
-                        <center><h1>UNIVERSIDAD NACIONAL DE JUJUY</h1></center>
-                    </div>
+            <div id="tooplate_header"> 
+                <div id="titulo">
+                    <center><h1>UNIVERSIDAD NACIONAL DE JUJUY</h1></center>
                 </div>
+            </div>
 
-                <div id="tooplate_middle">
-                    <h:form>
-                        <p:menubar>
-                            <p:menuitem value="productos" outcome="/consumidor/producto"/>
+            <div id="tooplate_middle">
+                <h:form>
+                    <p:menubar>
+                        <p:submenu label="Acciones">
+                            <p:menuitem value="Registrar productos" outcome="/registroProductos"/>
+                            <p:menuitem value="Registrar usuarios" outcome="/registroUsuarios"/>
+                            <p:menuitem value="Gráfico de ventas" outcome="/graficoVentas"/>
                             <p:menuitem value="volver" outcome="/index"/>
-                            <f:facet name="options">
-                                <p:outputLabel value="Bienvenido...#{loginFormBean.nombreUsuarioValidado}"/>
-                                <p:commandButton value="Cerrar Seccion" action="#{loginFormBean.cerrarSesion()}"
-                                                 />
-                            </f:facet>
-                        </p:menubar>
-                    </h:form>
-                    
-                    <p:panel id="panelIniciarSeccion" rendered="#{loginFormBean.verificarSesion()}">
-                        <h:form>
-                            <p:outputLabel value="Sesion no iniciada"/>
-                            <p:commandButton value="Iniciar Sesion" action="/index?faces-redirect=true"/>
-                        </h:form>
-                    </p:panel>
-                </div>
-            
+                        </p:submenu>
+                        <f:facet name="options">
+                            <p:outputLabel value="Bienvenido...#{loginFormBean.nombreUsuarioValidado}"/>
+                            <p:commandButton value="Cerrar Sesion" action="#{loginFormBean.cerrarSesion()}"/>
+                        </f:facet>
+                    </p:menubar>
+                </h:form>
+
+
+            </div>
+
         </ui:composition>
 
     </body>

@@ -11,7 +11,8 @@ import java.io.Serializable;
 /**
  *Clase que se crea para testear el funcionamiento de la compra de producto
  * trayendo todos las variables de la clase producto
- * @author pcarolina
+ * @author pc
+ * carolina
  */
 public class CompraProducto implements Serializable{
     

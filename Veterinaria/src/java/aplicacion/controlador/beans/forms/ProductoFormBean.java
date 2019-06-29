@@ -23,7 +23,8 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author nata
+ * @author pc
+ * carolina
  * 
  * @ManagedProperty(value = "#{productoBean}")
     private ProductoBean productoBean;

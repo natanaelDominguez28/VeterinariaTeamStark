@@ -20,11 +20,12 @@ import javax.faces.bean.ViewScoped;
 /**
  *
  * @author pc
+ * carolina
  */
 @ManagedBean
 @ViewScoped
 public class PedidoFormBean implements Serializable{
-   @ManagedProperty(value = "#{productoFormBean}")
+   @ManagedProperty(value = "#{productoFormBean}") // aqui necesitamos la listaProductoParcial para acceder a ella y guardar en el pedido
       private ProductoFormBean productoFormBean;
       private List<Detalle>listaDetallePedidos; // lista de toda la factuta con detalle
       private Factura factura;

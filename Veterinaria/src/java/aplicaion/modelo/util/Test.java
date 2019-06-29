@@ -10,6 +10,7 @@ import java.io.Serializable;
 /**
  *clase test para probar no es tan elemental
  * @author pc
+ * carolina
  */
 public class Test implements Serializable {
     

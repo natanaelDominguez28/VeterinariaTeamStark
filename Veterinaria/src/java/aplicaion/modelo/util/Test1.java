@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * clase de testeo para probar si se carga una lista de facturas
  * @author pc
+ * carolina
  */
 public class Test1 implements Serializable{
     

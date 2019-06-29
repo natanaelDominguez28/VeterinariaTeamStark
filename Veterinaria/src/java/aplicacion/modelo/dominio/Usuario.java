@@ -46,6 +46,10 @@ public class Usuario  implements java.io.Serializable {
        this.correo = correo;
        this.facturas = facturas;
     }
+
+    public Usuario(int i, String carina, String cari, String comprador, Boolean TRUE) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
    
     public long getCodigo() {
         return this.codigo;

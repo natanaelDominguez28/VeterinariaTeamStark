@@ -9,23 +9,65 @@ import aplicacion.modelo.dominio.Producto;
 import java.io.Serializable;
 
 /**
- *
+ *Clase que se crea para testear el funcionamiento de la compra de producto
+ * trayendo todos las variables de la clase producto
  * @author pcarolina
  */
 public class CompraProducto implements Serializable{
     
-    private String codigo ="123";
-    private String nombre="pipeta";
+    private int codigo;
+    private String nombre;
     private String descripcion;
     private Double subTotal;
+    private Double total=0.0;
+    private int cantidad;
+    private Producto producto;
+    private int stock;
+    private boolean estado;
     private Double precioCosto;
-    private Producto prenda;
-
     
-    public CompraProducto() {
+  
+      //constructor
+     public CompraProducto() {
     }
     
     
+    //getters and setters 
+    
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+     private Double precioLista;
+
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+   
     public String getDescripcion() {
         return descripcion;
     }
@@ -33,9 +75,8 @@ public class CompraProducto implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    private Integer cantidad;
-    private Double precioLista;
-
+   
+   
     public Double getPrecioLista() {
         return precioLista;
     }
@@ -52,11 +93,11 @@ public class CompraProducto implements Serializable{
         this.subTotal = subTotal;
     }
   
-    public String getCodigo() {
+     public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
@@ -87,21 +128,11 @@ public class CompraProducto implements Serializable{
     }
 
     public Producto getPrenda() {
-        return prenda;
+        return producto;
     }
 
     public void setPrenda(Producto prenda) {
-        this.prenda = prenda;
+        this.producto = prenda;
     }
    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

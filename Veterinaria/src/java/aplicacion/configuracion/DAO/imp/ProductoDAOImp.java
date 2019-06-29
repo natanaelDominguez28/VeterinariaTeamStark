@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -59,12 +60,29 @@ public class ProductoDAOImp implements IProductoDAO, Serializable{
         session.getTransaction().commit();
         session.close();
     }
+
+    @Override
+    public List<Producto> obtenerTodos() {
+          Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Producto> pren = new ArrayList<>();
+        try {
+            Criteria criteria = session.createCriteria(Producto.class);
+            criteria.add(Restrictions.eq("estado", true));
+            criteria.addOrder(Order.asc("nombre"));
+            pren = (List<Producto>) criteria.list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return pren;// retorna el objeto que encontro
+    }
     
     /**
      * método que obtiene todos los productos.
      * @return la lista de todos los productos que existen en la base de datos.
      */
-    @Override
+  /*  @Override
     public List<Producto> obtenerTodos() {
         ArrayList<Producto> productos = new ArrayList();
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -75,8 +93,8 @@ public class ProductoDAOImp implements IProductoDAO, Serializable{
         session.close();
         }
         return productos;
-    }
+    }  */
 
 
     
-}
+} 

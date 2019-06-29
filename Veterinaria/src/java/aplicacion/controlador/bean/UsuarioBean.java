@@ -28,10 +28,11 @@ public class UsuarioBean implements Serializable{
      */
     public UsuarioBean() {
     usuario=new Usuario();
-    usuarioDAO=new UsuarioDAOImp();
+    
     }
     
     public void agregarUsuario(){
+        usuarioDAO=new UsuarioDAOImp();
         usuarioDAO.agregar(usuario);
     }
    

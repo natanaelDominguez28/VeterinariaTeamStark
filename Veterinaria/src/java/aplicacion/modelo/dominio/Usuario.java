@@ -1,5 +1,5 @@
 package aplicacion.modelo.dominio;
-// Generated 26/06/2019 22:39:30 by Hibernate Tools 4.3.1
+// Generated 03/07/2019 16:32:16 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -27,6 +27,15 @@ public class Usuario  implements java.io.Serializable {
     public Usuario() {
     }
 
+    public Usuario(long codigo, String nombreUsuario, String password, String tipoUsuario, Boolean estado) {
+        this.codigo = codigo;
+        this.nombreUsuario = nombreUsuario;
+        this.password = password;
+        this.tipoUsuario = tipoUsuario;
+        this.estado = estado;
+    }
+
+    
 	
     public Usuario(long codigo, String nombreUsuario, String password) {
         this.codigo = codigo;
@@ -45,10 +54,6 @@ public class Usuario  implements java.io.Serializable {
        this.tipoUsuario = tipoUsuario;
        this.correo = correo;
        this.facturas = facturas;
-    }
-
-    public Usuario(int i, String carina, String cari, String comprador, Boolean TRUE) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    
     public long getCodigo() {

@@ -9,8 +9,11 @@ import aplicacion.modelo.dominio.Factura;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -74,7 +77,7 @@ public class FacturaMain {
            
             if (((test.getFecha().after(dato1)) || test.getFecha().equals(dato1))&& (test.getFecha().before(dato2)|| (test.getFecha().equals(dato2)))== true) {
                 resultado.add(test);
-                total+=test.getPrecio();
+                //total+=test.getPrecio();
            }
             
         }   

@@ -1,5 +1,5 @@
 package aplicacion.modelo.dominio;
-// Generated 26/06/2019 22:39:30 by Hibernate Tools 4.3.1
+// Generated 03/07/2019 16:32:16 by Hibernate Tools 4.3.1
 
 
 
@@ -21,11 +21,13 @@ public class Detalle  implements java.io.Serializable {
     }
 
 	
-    public Detalle(Factura factura, Producto producto) {
+    public Detalle(long codigo, Factura factura, Producto producto) {
+        this.codigo = codigo;
         this.factura = factura;
         this.producto = producto;
     }
-    public Detalle(Factura factura, Producto producto, Integer cantidad, Double precio, Boolean estado, Double precioTotal) {
+    public Detalle(long codigo, Factura factura, Producto producto, Integer cantidad, Double precio, Boolean estado, Double precioTotal) {
+       this.codigo = codigo;
        this.factura = factura;
        this.producto = producto;
        this.cantidad = cantidad;

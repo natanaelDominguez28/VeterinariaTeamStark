@@ -29,6 +29,7 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import org.primefaces.PrimeFaces;
 import org.primefaces.context.RequestContext;
 
 /**
@@ -149,6 +150,7 @@ public class UsuarioFormBean implements Serializable {
      * Metodo que permite obtener todas los alumnos que estan cargados en la
      * tabla alumnos
      *
+     * @return 
      */
     public List<Usuario> obtenerUsuario() {
         listaDeUsuarios = usuarioBean.obtenerUsuario();
@@ -195,7 +197,7 @@ public class UsuarioFormBean implements Serializable {
        
         usuarioBean.agregarUsuario(usuario);
         usuarioBean.getUsuario().setEstado(Boolean.TRUE);
-        usuarioBean.getUsuario().setTipoUsuario("Administrativo");
+        usuarioBean.getUsuario().setTipoUsuario("Administrador");
         usuarioBean.modificarUsuario();
         //FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO,
@@ -235,7 +237,8 @@ public class UsuarioFormBean implements Serializable {
         facesContex.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "Usuario eliminado exitosamente", "Usuario eliminado exitosamente"));
         obtenerUsuario();//generar el listado
-        RequestContext.getCurrentInstance().update("frmUsuarios:tblUsuarios");
+        //RequestContext.getCurrentInstance().update("frmUsuarios:tblUsuarios"); Método deprecado
+        PrimeFaces.current().ajax().update("frmUsuarios:tblUsuarios");
     }
 
     public UsuarioBean getUsuarioBean() {

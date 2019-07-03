@@ -1,5 +1,5 @@
 package aplicacion.modelo.dominio;
-// Generated 26/06/2019 22:39:30 by Hibernate Tools 4.3.1
+// Generated 03/07/2019 16:32:16 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;

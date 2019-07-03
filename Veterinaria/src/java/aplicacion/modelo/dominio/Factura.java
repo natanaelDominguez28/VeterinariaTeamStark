@@ -30,6 +30,10 @@ public class Factura  implements java.io.Serializable {
        this.estado = estado;
        this.detalle = detalle;
     }
+
+    public Factura(Date date1, String pipetas, int i, double d) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
    
     public long getCodigo() {
         return this.codigo;

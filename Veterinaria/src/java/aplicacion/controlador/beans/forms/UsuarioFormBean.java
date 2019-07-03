@@ -22,8 +22,6 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -135,7 +133,7 @@ public class UsuarioFormBean implements Serializable {
         File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/usuarios.jasper"));
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasper.getPath(), parametros,
                 new JRBeanCollectionDataSource(obtenerUsuario()));
-        HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        /*HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
         response.setContentType("application/pdf");
         response.addHeader("Content-disposition", "attachment; filename=usuarios.pdf");
         ServletOutputStream stream = response.getOutputStream();
@@ -143,7 +141,7 @@ public class UsuarioFormBean implements Serializable {
 
         stream.flush();
         stream.close();
-        FacesContext.getCurrentInstance().responseComplete();
+        FacesContext.getCurrentInstance().responseComplete();*/
     }
 
     /**

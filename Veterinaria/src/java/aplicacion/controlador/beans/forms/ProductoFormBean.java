@@ -21,7 +21,6 @@ import javax.faces.bean.RequestScoped;
 
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 import org.primefaces.event.RowEditEvent;
 
 /**
@@ -184,8 +183,8 @@ public class ProductoFormBean implements Serializable {
 
     public void obtenerProducto() {
         listaProductos = productoBean.obtenerListadoProducto();
-        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-        session.setAttribute("listaProductos", listaProductos);
+        /*HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+        session.setAttribute("listaProductos", listaProductos);*/
     }
 
     public void eliminarProducto(Producto prod) {

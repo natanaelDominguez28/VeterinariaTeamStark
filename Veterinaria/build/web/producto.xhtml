@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <!-- aqui lista de producto para la compra de usuario tipo consumidor  -->
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+       <h:form id="frmPrendas" >
+
+                    <p:dataTable id="tblProductos" 
+                                 value="#{productoFormBean.listaProductos}"
+                                 var="pro"
+                                 paginator="true"
+                                 rows="5"
+                                 widgetVar="TablaProdcutos"
+                                 emptyMessage="No se hayaron Prendas con el criterio">
+                        <f:facet name="header">
+                            LISTA DE PRODUCTOS
+                        </f:facet>
+
+
+                        <p:column headerText="Opc" style="width: 70px">
+                            <p:commandButton icon="ui-icon-pencil"
+                                             value="Comprar"
+                                             actionListener="#{productoFormBean.asignarProducto(pro)}"
+                                             
+                                             update=":dlgProducto" oncomplete="PF('dlgCompraProducto').show()"/>
+                        </p:column>
+
+                        <p:column headerText="Cod." style="width: 50px;">
+                            <p:outputLabel value="#{pro.codigo}"/>
+                        </p:column>
+
+                        <p:column headerText="Descricion" style="width: 100px;">
+                            <p:outputLabel value="#{pro.descripcion}"/>
+                        </p:column>
+
+                      
+
+                         <p:column headerText="PrecioCosto" style="width: 100px;">
+                             <p:outputLabel value="#{pro.precioCosto}"/>
+                        </p:column>
+
+
+                        <p:column headerText="Stock" style="width: 50px;">
+                            <p:outputLabel value="#{pro.stock}"/>
+                        </p:column>
+
+                       
+
+
+
+                    </p:dataTable> 
+                    <br/>
+                  
+                </h:form>
+        
+        
+        
+         <p:dialog id="dlgProducto" widgetVar="dlgCompraProducto"
+                          modal="true" header="Detalle Compra"
+                          showEffect="explode" hideEffect="explode"
+                          resizable="false">
+
+                    <p:growl id="mensajesProducto" showDetail="false"
+                             showSummary="true" sticky="false"/>
+
+                    <h:form id="productoForm">
+                        <p:panelGrid columns="2" id="tblProd">
+
+                            <p:outputLabel for="txtDescripcion" value="Descripcion"/>
+                            <p:inputText id="txtDescripcion"
+                                         value="#{productoFormBean.compraProducto.descripcion}" disabled="true">
+                            </p:inputText>
+                            
+                              <p:outputLabel for="txtPrecio" value="Precio"/>
+                            <p:inputText id="txtPrecio"
+                                             
+                                         value="#{productoFormBean.compraProducto.precioCosto}"
+                                             maxlength="20" disabled="true"/>
+                                <p:outputLabel for="txtCantidad" value="Ingrese Cantidad"/>
+                            <p:inputText id="txtCantidad"
+                                             
+                                         value="#{productoFormBean.compraProducto.cantidad}"
+                                         maxlength="20"  />
+
+
+
+                            <p:commandButton id="btnGrabarPrendas" value="AGREGAR AL CARRITO"
+                                              actionListener="#{productoFormBean.agregarLista()}"
+                                              oncomplete="PF('dlgCompraProducto').hide()"
+                                              update=":frmProductosComprados:tblProductosComprados"
+                                             
+                                              >
+                                
+                            </p:commandButton>
+                            <p:commandButton id="bntSalirAltaPrenda" value="SALIR" style="float: right;"
+                                             oncomplete="PF('dlgCompraProducto').hide()"/>
+                        </p:panelGrid>  
+                    </h:form> 
+
+                   
+                </p:dialog> 
+        
+        
+        <!-- DETALLES -->
+        
+        <h:form id="frmProductosComprados" >
+             <p:dataTable id="tblProductosComprados" 
+                          value="#{productoFormBean.listaProductoParcial}"
+                                 var="proc2"
+                                 paginator="true"
+                                 rows="5"
+                                 widgetVar="TablaProdcutosComprados"
+                                 emptyMessage="No se hayaron Productos con el criterio">
+                        <f:facet name="header">
+                            LISTA DE PRODUCTOS EN EL CARRITO
+                        </f:facet>
+                 
+                         <p:column headerText="Producto" style="width: 100px;">
+                             <p:outputLabel value="#{proc2.descripcion}"/>
+                        </p:column>
+                 
+                         <p:column headerText="Precio" style="width: 100px;">
+                             <p:outputLabel value="#{proc2.precioCosto}"/>
+                        </p:column>
+                          <p:column headerText="Cantidad Comprada" style="width: 100px;">
+                              <p:outputLabel value="#{proc2.cantidad}"/>
+                        </p:column>
+                          <p:column headerText="SubTotal" style="width: 100px;">
+                              <p:outputLabel value="#{proc2.subTotal}"/>
+                        </p:column>
+               
+             
+                    </p:dataTable> 
+                  
+           
+              
+        </h:form>
+        <p:commandButton  id="bntAgregarcompra" value="COMPRAR TODO" style="float:right;"
+                          actionListener="#{pedidoFormBean.agregarDetalle()}" update=":frmDetalle:tblDetalle"/>
+                          
+        
+        <!-- DETALLE FACTURA en otra pagina redireccionar el boton comprar todo en esta pagina -->
+        <h:form id="frmDetalle">
+            <p:dataTable id="tblDetalle" 
+                         value="#{pedidoFormBean.listaDetallePedidos}"
+                                 var="pe"
+                                 paginator="true"
+                                 rows="5"
+                                 widgetVar="TablaProdcutosComprados"
+                                 emptyMessage="No se hayaron Detalles con el criterio">
+                        <f:facet name="header">
+                            LISTA DE DETALLES 
+                        </f:facet>
+                 
+                         <p:column headerText="Fecha" style="width: 100px;">
+                             <p:outputLabel value="#{pe.factura.fecha}"/>
+                        </p:column>
+                 
+                         <p:column headerText="Usuario" style="width: 100px;">
+                             <p:outputLabel value="#{pe.factura.usuario.nombre}"/>
+                        </p:column>
+                          <p:column headerText="Codigo" style="width: 100px;">
+                              <p:outputLabel value="#{pe.codigo}"/>
+                        </p:column>
+                          <p:column headerText="Producto" style="width: 100px;">
+                              <p:outputLabel value="#{pe.producto}"/>
+                        </p:column>
+                         <p:column headerText="Cantidad" style="width: 100px;">
+                             <p:outputLabel value="#{pe.cantidad}"/>
+                        </p:column>
+                         <p:column headerText="Subtotal" style="width: 100px;">
+                             <p:outputLabel value="#{pe.precio}"/>
+                        </p:column>
+                       
+                        
+                        
+          
+                                 
+                    </p:dataTable> 
+            
+        </h:form>
+       
+    </h:body>
+</html>
+

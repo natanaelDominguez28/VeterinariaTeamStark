@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./templates/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form id="frmAltaProducto">
+            <p:growl id="mensaje" showDetail="true"/>
+            <p:panel header="Alta de productos">
+                <p:panelGrid columns="2">
+                    <p:outputLabel id="lblNombreProducto" value="Nombre: " for="txtNombreProducto"/>
+                    <p:inputText id="txtNombreProducto" required="true" requiredMessage="Debe ingresar el nombre del producto"
+                                 value="#{productoFormBean.producto.nombre}"/>
+                    <p:outputLabel id="lblDescripcion" value="Descripcion: " for="txtDescripcion"/>
+                    <p:inputText id="txtDescripcion" required="true" requiredMessage="Debe ingresar la descripcion"
+                                 value="#{productoFormBean.producto.descripcion}"/>
+                    <p:outputLabel id="lblPrecioLista" value="Precio de lista: $" for="txtPrecioLista"/>
+                    <p:inputNumber id="txtPrecioLista" decimalPlaces="2" decimalSeparator="," required="true"
+                                   requiredMessage="Debe ingresar el precio de lista"
+                                   value="#{productoFormBean.producto.precioLista}"/>
+                    <p:outputLabel id="lblPrecioCosto" value="Precio costo: $" for="txtPrecioCosto"/>
+                    <p:inputNumber id="txtPrecioCosto" decimalPlaces="2" decimalSeparator="," required="true"
+                                   requiredMessage="Debe ingresar el precio de costo"
+                                   value="#{productoFormBean.producto.precioCosto}"/>
+                    <p:outputLabel id="lblStock" value="Stock: " for="txtStock"/>
+                    <p:inputNumber id="txtStock" required="true" requiredMessage="Debe ingresar el stock"
+                                   value="#{productoFormBean.producto.stock}"/>
+                    <p:outputLabel id="lblEstado" value="Estado: " for="txtEstado" />
+                    <p:selectBooleanButton id="txtEstado" value="#{productoFormBean.producto.estado}" onLabel="Disponible"
+                                           offLabel="No disponible" onIcon="ui-icon-check" offIcon="ui-icon-close"/>
+
+                    <p:commandButton id="btnAgregar" value="REGISTRAR" actionListener="#{productoFormBean.agregarProducto()}"
+                                     icon="ui-icon-disk"
+                                     update="mensaje, tblProductos"/>
+                </p:panelGrid>
+                <p:separator/>
+                <p:panel header="Productos registrados">
+
+                    <p:dataTable id="tblProductos" var="prod" value="#{productoFormBean.productoBean.obtenerListadoProducto()}" editable="true">
+
+                        <p:ajax event="rowEdit" listener="#{productoFormBean.onRowEdit}" update=":frmAltaProducto:mensaje"/>
+                        <p:ajax event="rowEditCancel" listener="#{productoFormBean.onRowEditCancel}" update=":frmAltaProducto:mensaje"/>
+
+                        <p:column id="clCodigo" headerText="Codigo" field="Codigo">
+                            <p:outputLabel value="#{prod.codigo}"/>
+                        </p:column> 
+                        <p:column id="clNombre" headerText="Nombre" field="Nombre">
+                            <p:cellEditor>
+                                <f:facet name="output"><p:outputLabel value="#{prod.nombre}"/></f:facet>
+                                <f:facet name="input"><p:inputText value="#{prod.nombre}"></p:inputText></f:facet>
+                            </p:cellEditor>
+
+                        </p:column> 
+                        <p:column id="clDescripcion" headerText="Descripcion" field="Descripcion">
+                            <p:cellEditor>
+                                <f:facet name="output"><p:outputLabel value="#{prod.descripcion}"/></f:facet>
+                                <f:facet name="input"><p:inputText value="#{prod.descripcion}"></p:inputText></f:facet>
+                            </p:cellEditor>
+                        </p:column> 
+                        <p:column id="clPrecioLista" headerText="Precio de Lista">
+                            <p:cellEditor>
+                                <f:facet name="output"><p:outputLabel value="#{prod.precioLista}"/></f:facet>
+                                <f:facet name="input"><p:inputText value="#{prod.precioLista}"></p:inputText></f:facet>
+                            </p:cellEditor>
+                        </p:column> 
+                        <p:column id="clPrecioCosto" headerText="Precio costo">
+                            <p:cellEditor>
+                                <f:facet name="output"><p:outputLabel value="#{prod.precioCosto}"/></f:facet>
+                                <f:facet name="input"><p:inputText value="#{prod.precioCosto}"></p:inputText></f:facet>
+                            </p:cellEditor>
+                        </p:column> 
+                        <p:column id="clStock" headerText="Stock">
+                            <p:cellEditor>
+                                <f:facet name="output"><p:outputLabel value="#{prod.stock}"/></f:facet>
+                                <f:facet name="input"><p:inputText value="#{prod.stock}"></p:inputText></f:facet>
+                            </p:cellEditor>
+                        </p:column> 
+                        <p:column id="clAcciones" headerText="Acciones">
+                            <p:rowEditor/>
+                            <p:commandButton id="btnEliminar" icon="ui-icon-trash"
+                                             actionListener="#{productoFormBean.eliminarProducto(prod)}"
+                                             update="frmAltaProducto:tblProductos"/>
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+            </p:panel>
+
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

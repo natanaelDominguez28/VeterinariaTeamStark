@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templates/template.xhtml">
+
+            <ui:define name="content">
+                <p:growl id="mensajes" showDetail="false"
+                         showSummary="true"
+                         sticky="false"/>
+
+                <h:form id="frmUsuarios" >
+                    <p:dataTable id="tblUsuarios" value="#{usuarioFormBean.listaDeUsuarios}"
+                                 var="us">
+
+
+                        <f:facet name="header">  
+                            LISTA DE USUARIOS
+                        </f:facet>
+
+                        <p:column id="modificar" headerText="Modificar">
+                            <p:commandButton id="btnModificar" icon="ui-icon-pencil"
+                                             actionListener="#{usuarioFormBean.asignarUsuarioSeleccionado(us)}"
+                                             oncomplete="PF('dlg').show()"
+                                             update="dlgModificar"/>
+                        </p:column>
+                        <p:column id="eliminar" headerText="Eliminar">
+                            <p:commandButton id="btnEliminar" icon="ui-icon-trash" 
+                                             actionListener="#{usuarioFormBean.eliminarUsuario(us)}"
+                                             update="tblUsuarios mensajes">
+                               <p:confirm header="Pedido de Confirmacion"
+                                           message="¿Desea Eliminar el Usuario?" icon="ui-icon-alert"/>
+                            </p:commandButton>
+                        </p:column>
+                        <p:column headerText="Nombre"  style="width: 100px;" >         
+                            <p:outputLabel value="#{us.nombre}"/>
+                        </p:column>
+
+                        <p:column headerText="Apellido" style="width: 50px;" >
+                            <p:outputLabel value="#{us.apellido}"/>         
+                        </p:column> 
+
+                        <p:column headerText="Tipo de Usuario" style="width: 100px;" >
+                            <p:outputLabel value="#{us.tipoUsuario}" />
+                        </p:column>
+
+                        <p:column headerText="dni" style="width: 100px;" >
+                            <p:outputLabel value="#{us.dni}" />
+                        </p:column>
+
+                        <p:column headerText="Correo" style="width: 50px;" >
+                            <p:outputLabel value="#{us.correo}"/>
+                        </p:column>
+
+
+                        <p:column headerText="NombreUsuario" style="width: 100px;">
+                            <p:outputLabel value="#{us.nombreUsuario}"/>
+
+                        </p:column>
+                        <p:column headerText="Contraseña" style="width: 100px;" >
+                            <p:outputLabel value="#{us.password}"/>
+                        </p:column>
+                        <p:column headerText="Fecha De Nacimiento" style="width: 50px;">
+                            <p:outputLabel value="#{us.fechaNacimiento}"/>         
+                        </p:column>         
+
+                    </p:dataTable>
+
+                    <p:commandButton id="btnRegistra" value="REGISTRAR"
+                                     update=":dlgAlta"
+                                     oncomplete="PF('dlgAltaUsuario').show()">
+                    </p:commandButton>
+
+                    <p:commandButton id="btnImprimirUsuario" value="REPORTE" 
+                                     actionListener="#{usuarioFormBean.exportarUsuariosPdf(actionEvent)}"
+                                     ajax="false" resetValues="true"/>
+
+                </h:form>
+
+
+
+                <!-- ALTA USUARIO-->
+
+
+                <p:dialog id="dlgAlta" header="Agregar Usuario" modal="true" widgetVar="dlgAltaUsuario"
+                          resizable="false"  
+                          showEffect="explode" hideEffect="explode">
+                    <p:growl id="mensaje" showDetail="true"/>
+                    <h:form id="frmAlta">      
+                        <h:panelGrid columns="2">
+                            <p:outputLabel for="txtNombreUsuario" value="Nombre de Usuario"/>
+                            <p:inputText id="txtNombreUsuario" value="#{usuarioFormBean.usuarioBean.usuario.nombreUsuario}" 
+                                         required="true" placeholder="Usuario"
+                                         requiredMessage="Debe ingresar un nombre de usuario"/>
+
+                            <p:outputLabel for="txtPassword" value="Password"/>
+                            <p:password id="txtPassword" value="#{usuarioFormBean.usuarioBean.usuario.password}" required="true" placeholder="password" requiredMessage="Debe ingresar una contraseña"/>
+
+                            <p:outputLabel for="txtApellido" value="Apellido"/>
+                            <p:inputText id="txtApellido" required="true" size="20" maxlength="20"
+                                         placeholder="apellido"
+                                         value="#{usuarioFormBean.usuarioBean.usuario.apellido}" 
+                                         requiredMessage="Debe ingresar su apellido"/>
+
+                            <p:outputLabel for="txtNombre" value="Nombres"/>
+                            <p:inputText id="txtNombre" value="#{usuarioFormBean.usuarioBean.usuario.nombre}"
+                                         placeholder="nombres"
+                                         required="true" requiredMessage="Debe ingresar su nombre"/>
+
+                            <p:outputLabel for="txtDni" value="DNI: "/>
+                            <p:inputMask id="txtDni" required="true" size="9" maxlength="9"
+                                         mask="99.999.999"
+                                         placeholder="dni"
+                                         value="#{usuarioFormBean.usuarioBean.usuario.dni}" requiredMessage="Debe ingresar su dni"/>
+
+                            <p:outputLabel for="txtFechaNac" value="Fecha de Nacimiento"/>
+                            <p:calendar id="txtFechaNac" pattern="dd-MM-yyyy" mask="true"
+                                        required="true" size="10" maxlength="10" locale="es"
+                                        value="#{usuarioFormBean.usuarioBean.usuario.fechaNacimiento}"
+                                        requiredMessage="Debe ingresar su fecha de nacimiento"/>
+
+                            <p:outputLabel id="lblCorreo" for="txtCorreo" value="E-mail: "/>
+                            <p:inputText id="txtCorreo" required="true" requiredMessage="Debe ingresar su correo electrónico"
+                                         placeholder="abc@def.com"
+                                         validatorMessage="Correo electronico no valido"
+                                         value="#{usuarioFormBean.usuarioBean.usuario.correo}">
+                                <f:validateRegex
+                                    pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                            </p:inputText>
+
+                        </h:panelGrid>
+                        <p:commandButton id="btnGuardar" value="GUARDAR"
+                                         actionListener="#{loginFormBean.agregarUsuario()}"
+                                         oncomplete="PF('dlgAltaUsuario').hide();"
+                                         update="mensajes"
+                                         >
+                            <p:confirm header="Pedido de Confirmacion"
+                                       message="¿Confirmar agregar Usuario?" icon="ui-icon-alert"/>
+                        </p:commandButton> 
+
+                    </h:form>
+
+                </p:dialog>      
+
+
+                <h:form id="frmConfirmacionOperacionUsuario">
+                    <p:confirmDialog id="confirmacionDialogoUsuario"
+                                     global="true" showEffect="fade" hideEffect="fade">
+
+                        <p:commandButton value="SI" type="button"
+                                         styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                        <p:commandButton value="NO" type="button"
+                                         styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+                                         style="float: right;"/>
+                    </p:confirmDialog>
+
+                </h:form>
+
+                <p:dialog id="dlgModificar" modal="true" resizable="false" header="Actualizando Usuario"
+                          widgetVar="dlg"
+                          closable="true">
+                    <h:form id="frmModificar">
+                        <p:growl id="dlg" showDetail="true"/>
+                        <h:panelGrid columns="2">
+                            <p:outputLabel for="txtNombreUsuario" value="Nombre de Usuario"/>
+                            <p:inputText id="txtNombreUsuario" value="#{usuarioFormBean.usuarioBean.usuario.nombreUsuario}" 
+                                         required="true" placeholder="Usuario"
+                                         requiredMessage="Debe ingresar un nombre de usuario"/>
+
+                            <p:outputLabel for="txtPassword" value="Password"/>
+                            <p:password id="txtPassword" value="#{usuarioFormBean.usuarioBean.usuario.password}" required="true" placeholder="password" requiredMessage="Debe ingresar una contraseña"/>
+
+                            <p:outputLabel for="txtApellido" value="Apellido"/>
+                            <p:inputText id="txtApellido" required="true" size="20" maxlength="20"
+                                         placeholder="apellido"
+                                         value="#{usuarioFormBean.usuarioBean.usuario.apellido}" 
+                                         requiredMessage="Debe ingresar su apellido"/>
+
+                            <p:outputLabel for="txtNombre" value="Nombres"/>
+                            <p:inputText id="txtNombre" value="#{usuarioFormBean.usuarioBean.usuario.nombre}"
+                                         placeholder="nombres"
+                                         required="true" requiredMessage="Debe ingresar su nombre"/>
+
+                            <p:outputLabel for="txtDni" value="DNI: "/>
+                            <p:inputMask id="txtDni" required="true" size="9" maxlength="9"
+                                         mask="99.999.999"
+                                         placeholder="dni"
+                                         value="#{usuarioFormBean.usuarioBean.usuario.dni}" requiredMessage="Debe ingresar su dni"/>
+
+                            <p:outputLabel for="txtFechaNac" value="Fecha de Nacimiento"/>
+                            <p:calendar id="txtFechaNac" pattern="dd-MM-yyyy" mask="true"
+                                        required="true" size="10" maxlength="10" locale="es"
+                                        value="#{usuarioFormBean.usuarioBean.usuario.fechaNacimiento}"
+                                        requiredMessage="Debe ingresar su fecha de nacimiento"/>
+
+                            <p:outputLabel id="lblCorreo" for="txtCorreo" value="E-mail: "/>
+                            <p:inputText id="txtCorreo" required="true" requiredMessage="Debe ingresar su correo electrónico"
+                                         placeholder="abc@def.com"
+                                         validatorMessage="Correo electronico no valido"
+                                         value="#{usuarioFormBean.usuarioBean.usuario.correo}">
+                                <f:validateRegex
+                                    pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                            </p:inputText>
+
+                        </h:panelGrid>
+                        <p:commandButton id="btnModificar" value="ACTUALIZAR" actionListener="#{usuarioFormBean.modificarUsuario()}"
+                                         icon="ui-icon-disk"
+                                         update="dlg">
+                          <p:confirm header="Pedido de Confirmacion"
+                                       message="¿Confirmar agregar Usuario?" icon="ui-icon-alert"/>
+                        </p:commandButton>
+
+                    </h:form>
+                </p:dialog>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

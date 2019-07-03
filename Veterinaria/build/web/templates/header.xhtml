@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition>
+            <div id="tooplate_header"> 
+                <div id="titulo">
+                    <center><h1>UNIVERSIDAD NACIONAL DE JUJUY</h1></center>
+                </div>
+            </div>
+
+            <div id="tooplate_middle">
+                <h:form>
+                    <p:menubar>
+                        <p:submenu label="Acciones">
+                            <p:menuitem value="ABM de productos" outcome="/producto"/>
+                            <p:menuitem value="ABM de usuarios" outcome="/usuario"/>
+                            <p:menuitem value="Gráfico de ventas" outcome="/graficoVentas"/>
+                            <p:menuitem value="volver" outcome="/menu"/>
+                        </p:submenu>
+                        <p:submenu label="Catalogo">
+                            <p:menuitem value="Catalogo" outcome="/producto"/>
+                            <p:menuitem value="volver" outcome="/menu"/>
+                        </p:submenu>
+                        <f:facet name="options">
+                            <p:outputLabel value="Bienvenido...#{loginFormBean.nombreUsuarioValidado}"/>
+                            <p:commandButton value="Cerrar Sesion" action="#{loginFormBean.cerrarSesion()}"/>
+                        </f:facet>
+                    </p:menubar>
+                </h:form>
+
+
+            </div>
+
+        </ui:composition>
+
+    </body>
+</html>

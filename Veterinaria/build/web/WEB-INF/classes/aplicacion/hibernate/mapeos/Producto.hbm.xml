@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03/07/2019 16:32:17 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="aplicacion.modelo.dominio.Producto" optimistic-lock="version" schema="public" table="producto">
+    <id name="codigo" type="long">
+      <column name="codigo"/>
+      <generator class="increment"/>
+    </id>
+    <property name="nombre" type="string">
+      <column length="20" name="nombre"/>
+    </property>
+    <property name="descripcion" type="string">
+      <column name="descripcion"/>
+    </property>
+    <property name="precioLista" type="java.lang.Double">
+      <column name="precio_lista" precision="17" scale="17"/>
+    </property>
+    <property name="precioCosto" type="java.lang.Double">
+      <column name="precio_costo" precision="17" scale="17"/>
+    </property>
+    <property name="stock" type="java.lang.Integer">
+      <column name="stock"/>
+    </property>
+    <property name="estado" type="java.lang.Boolean">
+      <column name="estado"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="detalles" table="detalle">
+      <key>
+        <column name="producto" not-null="true"/>
+      </key>
+      <one-to-many class="aplicacion.modelo.dominio.Detalle"/>
+    </set>
+  </class>
+</hibernate-mapping>

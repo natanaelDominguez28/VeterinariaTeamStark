@@ -33,9 +33,9 @@ public class LoginFormBean implements Serializable {
     /**
      * Creates a new instance of LoginFormBean
      */
-    public LoginFormBean() {    
+    public LoginFormBean() {
     }
-    
+
     public void activarColumnasOpciones() {
         setDesactivar(true);
     }
@@ -45,7 +45,8 @@ public class LoginFormBean implements Serializable {
     }
 
     public void agregarUsuario() {
-        usuarioBean.agregarUsuario();
+        Usuario us = new Usuario();
+        usuarioBean.agregarUsuario(us);
     }
 
     /**

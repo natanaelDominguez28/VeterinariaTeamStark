@@ -1,11 +1,24 @@
 top {
-
     position: relative;
-    background-color: #036fab;
+    background-color: activecaption;
     color: white;
     padding: 0px;
 }
+.row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    background: url("../imagene/images 1.jpg");
+}
 
+.col-4{
+    width: 33.33%;
+}
+
+.col-8{
+    width: 66.66%;
+}
 #bottom {
     position: relative;
     background-color: honeydew;
@@ -27,8 +40,8 @@ top {
 }
 
 #tooplate_header{
-    background: url("../imagene/perrodecompras.jpg");
-    height: 111px;
+    background: url("../imagene/images 1.jpg");
+    height: 150px;
     margin: 0 auto;
     padding: 0 40px;
 }
@@ -42,17 +55,16 @@ top {
 }
 
 #tooplate_main{
-    background: url("../images/tooplate_main.jpg") no-repeat top;
+    background: url("../imagene/perrodecompras.jpg") no-repeat top;
     clear: both;
-    height: 330px;
+    height: 500px;
     margin: 0 auto;
     padding: 10px 40px 0;
 }
 
-#titulo{
+#titulo{ 
     float: left;
     width: 960px;
-    margin-top: 3%;
-    color: #ff9041;
+    margin-top: 5%;
+    color: black;
 }
-

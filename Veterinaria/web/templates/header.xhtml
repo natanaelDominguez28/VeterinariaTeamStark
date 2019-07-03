@@ -19,10 +19,14 @@
                 <h:form>
                     <p:menubar>
                         <p:submenu label="Acciones">
-                            <p:menuitem value="Registrar productos" outcome="/registroProductos"/>
-                            <p:menuitem value="Registrar usuarios" outcome="/registroUsuarios"/>
+                            <p:menuitem value="ABM de productos" outcome="/registroProductos"/>
+                            <p:menuitem value="ABM de usuarios" outcome="/usuario"/>
                             <p:menuitem value="Gráfico de ventas" outcome="/graficoVentas"/>
-                            <p:menuitem value="volver" outcome="/index"/>
+                            <p:menuitem value="volver" outcome="/menu"/>
+                        </p:submenu>
+                        <p:submenu label="Catalogo">
+                            <p:menuitem value="Catalogo" outcome="/producto"/>
+                            <p:menuitem value="volver" outcome="/menu"/>
                         </p:submenu>
                         <f:facet name="options">
                             <p:outputLabel value="Bienvenido...#{loginFormBean.nombreUsuarioValidado}"/>

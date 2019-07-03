@@ -5,6 +5,8 @@
  */
 package aplicacion.controlador.beans.forms;
 
+import aplicacion.configuracion.DAO.IDetalleDAO;
+import aplicacion.configuracion.DAO.imp.DetalleDAOImp;
 import aplicacion.controlador.bean.DetalleBean;
 import aplicacion.modelo.dominio.Detalle;
 import aplicacion.modelo.dominio.Producto;
@@ -39,6 +41,7 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class DetalleFormBean implements Serializable{
+    private IDetalleDAO detalleDAO;
     private Detalle detalle;
     private Producto producto;
     private int cantidad;
@@ -48,9 +51,31 @@ public class DetalleFormBean implements Serializable{
     
     public DetalleFormBean(){
         detalle = new Detalle();
+        detalleDAO = new DetalleDAOImp();
         
     }
+    
+    //ABM
+    
+    public void crearDetalle(){
+        detalleDAO.crear(detalle);
+    }
 
+    
+    public void eliminarDetalle(){
+        detalleDAO.borrar(detalle);
+    }
+    
+    public void actualizarDetalle(){
+        detalleDAO.modificar(detalle);
+    }
+    
+    public void obtenerListadoDetalle(){
+        detalleDAO.obtenerTodos();
+    }
+    
+    //Getters and Setters
+    
     public Detalle getDetalle() {
         return detalle;
     }
@@ -90,7 +115,16 @@ public class DetalleFormBean implements Serializable{
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+
+    public IDetalleDAO getDetalleDAO() {
+        return detalleDAO;
+    }
+
+    public void setDetalleDAO(IDetalleDAO detalleDAO) {
+        this.detalleDAO = detalleDAO;
+    }
    
+    
     
     
     

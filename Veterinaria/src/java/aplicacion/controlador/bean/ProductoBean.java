@@ -13,8 +13,6 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,28 +32,20 @@ public class ProductoBean implements Serializable{
         productoDAO = new ProductoDAOImp();
     }
     
-    public void agregarProducto(){
+    public void agregarProducto(Producto producto){
         productoDAO.crear(producto);
     }
 
-    public void modificarProducto(){
+    public void modificarProducto(Producto producto){
         productoDAO.modificar(producto);
     }
     
-    public void eliminarProducto(){
+    public void eliminarProducto(Producto producto){
         productoDAO.borrar(producto);
     }
     
     public List<Producto> obtenerListadoProducto(){
         return productoDAO.obtenerTodos();
-    }
-
-    public Producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(Producto producto) {
-        this.producto = producto;
     }
 
     public IProductoDAO getProductoDAO() {
@@ -64,6 +54,14 @@ public class ProductoBean implements Serializable{
 
     public void setProductoDAO(IProductoDAO productoDAO) {
         this.productoDAO = productoDAO;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
     
     

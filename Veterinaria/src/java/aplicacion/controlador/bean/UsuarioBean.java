@@ -31,19 +31,19 @@ public class UsuarioBean implements Serializable{
     
     }
     
-    public void agregarUsuario(){
+    public void agregarUsuario(Usuario us){
         usuarioDAO=new UsuarioDAOImp();
-        usuarioDAO.agregar(usuario);
+        usuarioDAO.agregar(us);
     }
    
     //llamados de los metoodos de la implementacion
      public void modificarUsuario(){
-     IUsuarioDAO iUsuarioDAO=new UsuarioDAOImp();
-    iUsuarioDAO.modificar(usuario);
+     usuarioDAO = new UsuarioDAOImp();
+     usuarioDAO.modificar(usuario);
     }
-    public void eliminarUsuario(){
-    IUsuarioDAO iUsuarioDAO=new UsuarioDAOImp();
-    iUsuarioDAO.eliminar(usuario);
+    public void eliminarUsuario(Usuario us){
+        usuarioDAO = new UsuarioDAOImp();
+        usuarioDAO.eliminar(us);
     }
     
     
@@ -53,6 +53,7 @@ public class UsuarioBean implements Serializable{
      * @param password
      * @return  null si no lo encuentra*/
     public Usuario validarUsuario(String nombreUsuario, String password){
+        usuarioDAO=new UsuarioDAOImp();
         return usuarioDAO.validarUsuario(nombreUsuario, password);
     }
     

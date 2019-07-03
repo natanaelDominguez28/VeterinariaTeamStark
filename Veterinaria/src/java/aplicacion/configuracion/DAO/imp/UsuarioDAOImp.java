@@ -20,7 +20,6 @@ import org.hibernate.criterion.Restrictions;
  * @author mabel
  */
 public class UsuarioDAOImp implements IUsuarioDAO, Serializable {
-    
 
     @Override
     public Usuario validarUsuario(String nombreUsuario, String password) {
@@ -47,49 +46,50 @@ public class UsuarioDAOImp implements IUsuarioDAO, Serializable {
         session.close();
     }
 //agrege los metodos abstractos eliminar y modificar
+
     @Override
     public void eliminar(Usuario usuario) {
-      Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.delete(usuario);
         session.getTransaction().commit();
-        session.close();  
+        session.close();
     }
 
     @Override
     public void modificar(Usuario usuario) {
-      Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.update(usuario);
         session.getTransaction().commit();
-        session.close();  
+        session.close();
     }
 
     @Override
     public List<Usuario> obtenerUsuario() {
-               Session session=HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        Criteria criteria=session.createCriteria(Usuario.class);
+        Criteria criteria = session.createCriteria(Usuario.class);
         criteria.addOrder(Order.asc("apellido"));
-        List lista=criteria.list();
+        List lista = criteria.list();
         session.getTransaction();
         session.close();
-        return  lista;
+        return lista;
     }
 
     @Override
     public Usuario obtenerUsuario(String correoElectronico) {
-        Session session =HibernateUtil.getSessionFactory().openSession();
-       Criteria criteria = session.createCriteria(Usuario.class);
-       criteria.add(Restrictions.like("correoElectronico",correoElectronico));
-       Usuario usuario = null;
-       if (!criteria.list().isEmpty()){
-         usuario =(Usuario)criteria.list().get(0); // preguntar lo que esta dentro del parentesis
-         
-       }
-      // session.getTransaction().commit();
-       session.close();
-       return usuario;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(Usuario.class);
+        criteria.add(Restrictions.like("correoElectronico", correoElectronico));
+        Usuario usuario = null;
+        if (!criteria.list().isEmpty()) {
+            usuario = (Usuario) criteria.list().get(0); // preguntar lo que esta dentro del parentesis
+
+        }
+        // session.getTransaction().commit();
+        session.close();
+        return usuario;
     }
 
 }

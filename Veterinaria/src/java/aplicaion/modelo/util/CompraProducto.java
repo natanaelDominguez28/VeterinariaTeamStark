@@ -30,6 +30,7 @@ public class CompraProducto implements Serializable{
   
       //constructor
      public CompraProducto() {
+         producto = new Producto();
     }
     
     

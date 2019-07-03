@@ -74,13 +74,13 @@
 
                             <p:outputLabel for="txtDescripcion" value="Descripcion"/>
                             <p:inputText id="txtDescripcion"
-                                         value="#{productoFormBean.producto.descripcion}" disabled="true">
+                                         value="#{productoFormBean.compraProducto.descripcion}" disabled="true">
                             </p:inputText>
                             
                               <p:outputLabel for="txtPrecio" value="Precio"/>
                             <p:inputText id="txtPrecio"
                                              
-                                         value="#{productoFormBean.producto.precioCosto}"
+                                         value="#{productoFormBean.compraProducto.precioCosto}"
                                              maxlength="20" disabled="true"/>
                                 <p:outputLabel for="txtCantidad" value="Ingrese Cantidad"/>
                             <p:inputText id="txtCantidad"
@@ -112,7 +112,7 @@
         <h:form id="frmProductosComprados" >
              <p:dataTable id="tblProductosComprados" 
                           value="#{productoFormBean.listaProductoParcial}"
-                                 var="pro"
+                                 var="proc2"
                                  paginator="true"
                                  rows="5"
                                  widgetVar="TablaProdcutosComprados"
@@ -122,17 +122,17 @@
                         </f:facet>
                  
                          <p:column headerText="Producto" style="width: 100px;">
-                             <p:outputLabel value="#{pro.descripcion}"/>
+                             <p:outputLabel value="#{proc2.descripcion}"/>
                         </p:column>
                  
                          <p:column headerText="Precio" style="width: 100px;">
-                             <p:outputLabel value="#{pro.precioCosto}"/>
+                             <p:outputLabel value="#{proc2.precioCosto}"/>
                         </p:column>
                           <p:column headerText="Cantidad Comprada" style="width: 100px;">
-                              <p:outputLabel value="#{pro.cantidad}"/>
+                              <p:outputLabel value="#{proc2.cantidad}"/>
                         </p:column>
                           <p:column headerText="SubTotal" style="width: 100px;">
-                              <p:outputLabel value="#{pro.subTotal}"/>
+                              <p:outputLabel value="#{proc2.subTotal}"/>
                         </p:column>
                
              
@@ -148,7 +148,7 @@
         <!-- DETALLE FACTURA en otra pagina redireccionar el boton comprar todo en esta pagina -->
         <h:form id="frmDetalle">
             <p:dataTable id="tblDetalle" 
-                          value="#{pedidoFormBean.listaDetallePedidos}"
+                         value="#{pedidoFormBean.listaDetallePedidos}"
                                  var="pe"
                                  paginator="true"
                                  rows="5"

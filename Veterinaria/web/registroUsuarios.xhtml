@@ -22,13 +22,13 @@
                     </f:facet>
                     <p:column headerText="Opc" style="width: 200px">
                         <p:commandButton icon="ui-icon-pencil"
-                                         actionListener="#{usuarioFormBean.modificarUsuario(us)}"
+                                         actionListener="#{usuarioFormBean.modificarUsuario()}"
                                          update=":dlgModificarUsuario"
                                          oncomplete="PF('ModificacionUsuario').show()"/>
 
                         <p:commandButton icon="ui-icon-closethick"
                                          actionListener="#{usuarioFormBean.eliminarUsuario(us)}"
-                                         update=":mensajesListaDeUsuarios">
+                                         update=":mensajesListaDeUsuarios,tblUsuarios">
                             <p:confirm header="Pedido de Confirmacion"
                                        message="¿Desea Eliminar el Usuario?" icon="ui-icon-alert"/>
                         </p:commandButton>
@@ -171,7 +171,8 @@
 
 
                         <p:outputLabel value="Apellido" for="txtApellido"/>
-                        <p:inputText id="txtApellido" value="#{usuarioFormBean.usuarioBean.usuario.apellido}" required="true" readonly="true"/>     
+                        <p:inputText id="txtApellido" value="#{usuarioFormBean.usuarioBean.usuario.apellido}" required="true" readonly="true"
+                                     placeholder="#{usuarioFormBean.usuarioBean.usuario.apellido}"/>     
 
 
                         <p:outputLabel  value="Nombre" for="txtNombre"/>

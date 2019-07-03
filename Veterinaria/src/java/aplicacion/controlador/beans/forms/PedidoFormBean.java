@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 
 /**
@@ -23,7 +24,7 @@ import javax.faces.bean.ViewScoped;
  * carolina
  */
 @ManagedBean
-@ViewScoped
+@RequestScoped
 public class PedidoFormBean implements Serializable{
    @ManagedProperty(value = "#{productoFormBean}") // aqui necesitamos la listaProductoParcial para acceder a ella y guardar en el pedido
       private ProductoFormBean productoFormBean;
@@ -36,7 +37,7 @@ public class PedidoFormBean implements Serializable{
     public PedidoFormBean() {
         listaDetallePedidos = new ArrayList<>();
         factura = new Factura();
-        productoFormBean = new ProductoFormBean();
+        //productoFormBean = new ProductoFormBean();
        
                 
     }  

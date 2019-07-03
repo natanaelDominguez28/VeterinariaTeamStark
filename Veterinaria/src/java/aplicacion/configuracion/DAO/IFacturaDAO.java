@@ -5,13 +5,16 @@
  */
 package aplicacion.configuracion.DAO;
 
+import aplicacion.modelo.dominio.Factura;
+import java.util.List;
+
 /**
  *
  * @author nata
  */
 public interface IFacturaDAO {
-    void crear();
-    void borrar();
-    void modificar();
-    void obtenerTodos();
+    void crear(Factura factura);
+    void borrar(Factura factura);
+    void modificar(Factura factura);
+    List<Factura> obtenerTodos();
 }

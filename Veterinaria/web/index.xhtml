@@ -80,6 +80,12 @@
                            <f:validateRegex
                                pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                         </p:inputText>
+                        
+                        <p:outputLabel id="lblTipoUsuario" value="Tipo de usuario" for="txtTipoUsuario"/>
+                        <p:selectOneMenu id="txtTipoUsuario" value="#{usuarioFormBean.usuarioBean.usuario.tipoUsuario}">
+                            <f:selectItem itemLabel="Consumidor" itemValue="CONSUMIDOR"/>
+                            <f:selectItem itemLabel="Administrador" itemValue="ADMINISTRADOR"/>
+                        </p:selectOneMenu>
 
                     </h:panelGrid>
                     <p:commandButton id="btnGuardar" value="GUARDAR"
